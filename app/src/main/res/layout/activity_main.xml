@@ -16,19 +16,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="189dp"
-        android:layout_height="182dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="288dp"
+        android:layout_height="288dp"
+        android:adjustViewBounds="true"
         android:onClick="onWater"
-        android:text="@string/water_now"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/waterNow1"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="42dp" />
 
 </android.support.constraint.ConstraintLayout>
