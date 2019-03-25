@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WaterRootApp</string>
+    <string name="nextWater">Time till next water:</string>
 </resources>
