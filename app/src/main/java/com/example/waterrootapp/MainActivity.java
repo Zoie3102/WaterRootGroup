@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onWater(View v){
-        TextView output= findViewById(R.id.nextWater);
+        TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
         //Example code to write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
