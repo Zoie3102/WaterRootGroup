@@ -1,5 +1,6 @@
 package com.example.waterrootapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
 //        myRef.setValue("Hello, World!");
 
         //end Example code
+    }
+
+    public void onSetting (View v){
+        Intent startNewActivity = new Intent(this,SettingsActivity.class);
+        startActivity(startNewActivity);
+
+
     }
 }
