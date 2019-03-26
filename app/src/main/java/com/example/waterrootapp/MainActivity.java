@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseApp.initializeApp(this);
 
 
     }
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
         //Example code to write a message to the database
-        FirebaseApp.initializeApp(getApplication());
+        FirebaseApp.initializeApp(this);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("test1");
 
