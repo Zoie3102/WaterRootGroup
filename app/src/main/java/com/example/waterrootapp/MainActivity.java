@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //        DatabaseReference myRef = database.getReference("test1");
 //
 //        myRef.setValue("Hello, World!");
+
         //end Example code
     }
 }
