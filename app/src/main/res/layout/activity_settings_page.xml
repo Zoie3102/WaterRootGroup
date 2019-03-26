@@ -14,9 +14,19 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="10dp"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="10000dp"
+            android:layout_height="100dp"
+            android:text="@string/setting"
+            android:textAllCaps="true"
+            android:textColor="@color/blue"
+            android:textSize="30sp"/>
+
 
     </android.support.design.widget.AppBarLayout>
 

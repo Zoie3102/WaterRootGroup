@@ -4,4 +4,5 @@
     <string name="additionalFeatures">Additional Features</string>
     <string name="settingsButton">Settings</string>
     <string name="title_activity_settings_page">SettingsPage</string>
+    <string name="setting">Settings</string>
 </resources>
