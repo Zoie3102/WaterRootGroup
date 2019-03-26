@@ -21,16 +21,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/waterNow1" />
+        app:srcCompat="@drawable/WATERNOW3"
+        />
 
     <TextView
         android:id="@+id/nextWater"
-        android:layout_width="183dp"
-        android:layout_height="52dp"
+        android:layout_width="283dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/nextWater"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <TextView
@@ -44,12 +50,14 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nextWater"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.291" />
+
 
     <Button
         android:id="@+id/settingsButton"
@@ -66,7 +74,8 @@
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.4"
-        android:background="@color/blue"/>
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
 
 
 
@@ -86,6 +95,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.4"
-        android:background="@color/blue"/>
+        android:background="@color/blue"
+        android:textColor="@color/white"/>
 
 </android.support.constraint.ConstraintLayout>
