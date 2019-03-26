@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
         //Example code to write a message to the database
+        FirebaseApp.initializeApp(getApplication());
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("test1");
 
