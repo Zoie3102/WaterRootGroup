@@ -3,4 +3,5 @@
     <string name="nextWater">Time till next water:</string>
     <string name="additionalFeatures">Additional Features</string>
     <string name="settingsButton">Settings</string>
+    <string name="title_activity_settings_page">SettingsPage</string>
 </resources>
