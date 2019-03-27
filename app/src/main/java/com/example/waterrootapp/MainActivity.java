@@ -30,12 +30,24 @@ public class MainActivity extends AppCompatActivity {
 //        FirebaseApp.initializeApp(this);
 //        if (FirebaseApp==null)
 //        Log.d("got here");
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("test1");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference commands = database.getReference("commands");
 //
-//        myRef.setValue("Hello, World!");
+        commands.child("pumpOn").setValue(1);
 
         //end Example code
+    }
+    public void onNotWater(View v){
+        TextView output= (TextView) findViewById(R.id.nextWater);
+        output.setText("Not Pressed");
+        //Example code to write a message to the database
+//        FirebaseApp.initializeApp(this);
+//        if (FirebaseApp==null)
+//        Log.d("got here");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference commands = database.getReference("commands");
+//
+        commands.child("pumpOn").setValue(0);
     }
 
     public void onSetting (View v){
