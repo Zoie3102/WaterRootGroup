@@ -77,7 +77,8 @@
         app:layout_constraintWidth_default="percent"
         app:layout_constraintWidth_percent="0.4"
         android:background="@color/blue"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:onClick="onSetting"/>
 
 
 
