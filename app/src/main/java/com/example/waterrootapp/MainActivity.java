@@ -1,6 +1,7 @@
 package com.example.waterrootapp;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -20,10 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         setContentView(R.layout.activity_main);
+
+
 //        FirebaseApp.initializeApp(this);
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef = database.getReference("test1");
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         water.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
+
                 MotionEvent event=motionEvent;
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
 
@@ -52,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
         water.setAdjustViewBounds(true);
 
 
+    }
+
+
+    public void displayPopup (View view){
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout), R.string.water_message,Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     public void onWater(View v){

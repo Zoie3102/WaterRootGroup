@@ -94,5 +94,6 @@
     <string name="clear_log_summary">Enter the date and time in hr/min/dd/mm/yyyy format. All logs before this will be deleted.</string>
     <string name="auto_log">Automatically add information to the water log whenever a plant is watered</string>
     <string name="auto_log_switch">Automatic logging</string>
+    <string name="water_message">Plant has just been watered!</string>
 
 </resources>
