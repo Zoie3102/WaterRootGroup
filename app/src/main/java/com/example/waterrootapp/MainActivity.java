@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     public void onWater(View v){
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
+        ImageButton water=findViewById(R.id.imageButton);
+
+        water.setImageDrawable(getResources().getDrawable(R.drawable.clickwaternow2));
         //Example code to write a message to the database
 //        FirebaseApp.initializeApp(this);
 //        if (FirebaseApp==null)
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     public void onNotWater(View v){
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Not Pressed");
+        ImageButton water=findViewById(R.id.imageButton);
+        water.setImageDrawable(getResources().getDrawable(R.drawable.water_now3));
         //Example code to write a message to the database
 //        FirebaseApp.initializeApp(this);
 //        if (FirebaseApp==null)
