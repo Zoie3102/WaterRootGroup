@@ -78,4 +78,16 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <string name="switch_timer_description">Turn the timer on or off</string>
+    <string name="timer_set">Set Timer</string>
+    <string name="set_timer_summary">Set timer in hr/min/dd/mm/yy</string>
+    <string name="example_time">11:50</string>
+
+    <string name="set_timer">Set the timer for next water</string>
+    <string name="set_timer_switch">hr/min/dd/mm/yy</string>
+    <string name="timer_switch_description">Turn timer on or off</string>
+    <string name="timer_title">Timer</string>
+    <string name="timer">Timer</string>
+    <string name="timer_description">hr/min/dd/mm/yyyy</string>
 </resources>
