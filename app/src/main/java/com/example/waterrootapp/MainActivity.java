@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        water.setAdjustViewBounds(true);
 
 
     }
