@@ -10,13 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".instruction_guide"
-            android:label="@string/title_activity_instruction_guide"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".SettingsPage"
-            android:label="@string/title_activity_settings_page"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.waterrootapp.MainActivity" />
+        </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
