@@ -95,5 +95,7 @@
     <string name="auto_log">Automatically add information to the water log whenever a plant is watered</string>
     <string name="auto_log_switch">Automatic logging</string>
     <string name="water_message">Plant has just been watered!</string>
+    <string name="instructions_summary">Show instructions set up when app is starting</string>
+    <string name="instructions_switch">Instructions</string>
 
 </resources>

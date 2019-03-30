@@ -31,5 +31,10 @@
         android:singleLine="true"
         android:summary="@string/clear_log_summary"
         android:title="@string/clear_log" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="instructions_switch"
+        android:summary="@string/instructions_summary"
+        android:title="@string/instructions_switch" />
 
 </PreferenceScreen>
