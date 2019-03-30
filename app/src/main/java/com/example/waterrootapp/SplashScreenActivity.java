@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         firstTime = sharedPreferences.getBoolean("firstTime",true);
 
-        if (firstTime){
+        if (firstTime==false){
             new Handler().postDelayed(new Runnable() {
                 @Override                public void run() {
 

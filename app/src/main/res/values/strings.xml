@@ -97,5 +97,6 @@
     <string name="water_message">Plant has just been watered!</string>
     <string name="instructions_summary">Show instructions set up when app is starting</string>
     <string name="instructions_switch">Instructions</string>
+    <string name="header_content">How to Set Up your WaterRoot</string>
 
 </resources>
