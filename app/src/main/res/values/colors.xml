@@ -6,4 +6,8 @@
     <color name="blue">#0072a4</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="colorGradientStart">#D9FF43</color>
+    <color name="colorGradientEnd">#F67831</color>
+
+
 </resources>
