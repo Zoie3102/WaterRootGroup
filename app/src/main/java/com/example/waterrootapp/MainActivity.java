@@ -102,4 +102,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void onAdditional (View v){
+        Intent startNewActivity = new Intent(MainActivity.this,AdditionalFeatures.class);
+        startActivity(startNewActivity);
+
+
+    }
 }
