@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         water.setAdjustViewBounds(true);
+        getResources();
 
 
     }
@@ -97,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSetting (View v){
         Intent startNewActivity = new Intent(MainActivity.this,SettingsActivity.class);
+        startActivity(startNewActivity);
+
+
+    }
+
+    public void onAdditional (View v){
+        Intent startNewActivity = new Intent(MainActivity.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
 
 
