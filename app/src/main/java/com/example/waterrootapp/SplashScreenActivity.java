@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -12,6 +13,10 @@ public class SplashScreenActivity extends AppCompatActivity {
     Boolean firstTime;
 
     @Override    protected void onCreate(Bundle savedInstanceState) {
+
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
@@ -32,13 +37,20 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, 10000);
+            }, 1000000);
         }
         else {
             Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
             startActivity(i);
             finish();
         }
+
+
+    }
+
+    public void onExit (View v){
+        Intent startNewActivity = new Intent(SplashScreenActivity.this,MainActivity.class);
+        startActivity(startNewActivity);
 
 
     }
