@@ -1,6 +1,7 @@
 package com.example.waterrootapp;
 
 import android.content.Intent;
+
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +17,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
+public class MainActivity extends AppCompatActivity {
+    public static String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,13 @@ public class MainActivity extends AppCompatActivity {
         Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout), R.string.water_message,Snackbar.LENGTH_LONG);
         snackbar.show();
     }
+    public String getCurrentTime(View view) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
+        String strDate = "Current Time : " + mdformat.format(calendar.getTime());
+        return strDate;
 
+    }
     public void onWater(View v){
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
@@ -78,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
 //
         commands.child("pumpOn").setValue(1);
+
+
 
         //end Example code
     }
