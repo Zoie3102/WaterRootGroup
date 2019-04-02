@@ -102,5 +102,8 @@
     <string name="feature_one_content">WaterLog: View watering history including date, time and amount of water given to plant.</string>
     <string name="feature_two_content">PlantInfo: Take a picture of the plant and instantly get information on the type of the plant as well as its health.</string>
     <string name="exit_button_content">Exit</string>
+    <string name="wifi">Connect the device to wifi and link the app with the device.</string>
+    <string name="pump">Fill a water reservoir and then submerge the pump in the water.</string>
+    <string name="onplant">Run the hose to the plant, and then fasten the device above the potted plant at desired height. Double check that the water will not reach outside of the pot.</string>
 
 </resources>
