@@ -85,7 +85,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/blue"
-        android:onClick="onReturn"
+        android:onClick="onLog"
         android:text="Return to Home"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
