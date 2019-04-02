@@ -193,5 +193,9 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="return_to_home">Return To Home</string>
+    <string name="onplant"></string>
+    <string name="wifi"></string>
+    <string name="pump"></string>
 
 </resources>
