@@ -200,5 +200,6 @@
 </string>
     <string name="pump">Fill a water reservoir and then submerge the pump in the water.
 </string>
+    <string name="return_button_waterlog">Back</string>
 
 </resources>
