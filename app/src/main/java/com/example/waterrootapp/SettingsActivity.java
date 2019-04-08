@@ -19,6 +19,15 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.Switch;
+import android.widget.TextView;
+
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -121,6 +130,46 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActionBar();
+
+        Switch timerButton = (Switch) findViewById(R.id.timer);
+        timerButton.setChecked(true);
+        timerButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    autoWater(3);
+
+
+                }
+
+            }
+        });
+
+    }
+
+
+    public void autoWater(double seconds){
+        //TextView output= (TextView) findViewById(R.id.nextWater);
+        //output.setText("Pressed");
+       // ImageButton water=findViewById(R.id.imageButton);
+
+        //water.setImageDrawable(getResources().getDrawable(R.drawable.clickwaternow2));
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference commands = database.getReference("commands");
+//
+        commands.child("pumpOn").setValue(1);
+        try {
+            wait((long) (seconds*1000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        commands.child("pumpOn").setValue(0);
+
+
+
     }
 
     /**

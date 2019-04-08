@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         return strDate;
 
     }
-    public void onWater(View v){
+     public void onWater(View v){
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
         ImageButton water=findViewById(R.id.imageButton);

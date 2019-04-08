@@ -4,7 +4,8 @@
         android:defaultValue="true"
         android:key="example_switch"
         android:summary="@string/switch_timer_description"
-        android:title="@string/timer" />
+        android:title="@string/timer"
+        android:id="@+id/timer"/>
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
@@ -23,7 +24,8 @@
         android:defaultValue="false"
         android:key="auto_log"
         android:summary="@string/auto_log"
-        android:title="@string/auto_log_switch" />
+        android:title="@string/auto_log_switch"
+        />
     <EditTextPreference
         android:defaultValue="Default value"
         android:key="clear_log"
