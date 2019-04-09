@@ -158,27 +158,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 
 
 
-    public void autoWater(){
-
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference commands = database.getReference("commands");
-//
-                    commands.child("pumpOn").setValue(1);
-                    try {
-                        wait((long) (3000));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    commands.child("pumpOn").setValue(0);
-
-
-
-
-
-
-
-
-    }
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
