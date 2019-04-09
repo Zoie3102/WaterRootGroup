@@ -1,7 +1,12 @@
 package com.example.waterrootapp;
 
+import android.app.IntentService;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.Service;
 import android.content.Intent;
 
+import android.os.Build;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +26,11 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     public static String time;
@@ -30,29 +38,45 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        createNotificationChannel();
+
+        Calendar myCalendar =  Calendar.getInstance();
+
+        String dateNow = DateFormat.getDateInstance().format(myCalendar.getTime());
 
         Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
         timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference commands = database.getReference("commands");
-//
-                    commands.child("pumpOn").setValue(1);
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    commands.child("pumpOn").setValue(0);
+                if (isChecked) {
+
+                    Intent intent = new Intent(MainActivity.this,TimerService.class);
 
 
+                    startService(intent);
 
 
+//                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                    DatabaseReference commands = database.getReference("commands");
+////
+//                    commands.child("pumpOn").setValue(1);
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    commands.child("pumpOn").setValue(0);
+                }
+                else{
+                    Intent intent = new Intent(MainActivity.this,TimerService.class);
+
+                    stopService(intent);
                 }
 
+
             }
+
+
         });
 
 
@@ -92,6 +116,19 @@ public class MainActivity extends AppCompatActivity {
         getResources();
 
 
+    }
+
+    public static final String CHANNEL_ID = "exampleServiceChannel";
+
+    private void createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "Example Service Channel",
+                    NotificationManager.IMPORTANCE_DEFAULT
+
+            );
+        }
     }
 
 
