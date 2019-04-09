@@ -2,6 +2,7 @@ package com.example.waterrootapp;
 
 import android.content.Intent;
 
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +11,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +30,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
+        timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference commands = database.getReference("commands");
+//
+                    commands.child("pumpOn").setValue(1);
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    commands.child("pumpOn").setValue(0);
+
+
+
+
+                }
+
+            }
+        });
+
+
+
+
 
 
 //        FirebaseApp.initializeApp(this);
@@ -63,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+
     public void displayPopup (View view){
         Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout), R.string.water_message,Snackbar.LENGTH_LONG);
         snackbar.show();
@@ -75,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
      public void onWater(View v){
-        TextView output= (TextView) findViewById(R.id.nextWater);
+
+
+         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Pressed");
         ImageButton water=findViewById(R.id.imageButton);
 

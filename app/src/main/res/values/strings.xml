@@ -114,5 +114,6 @@
 </string>
     <string name="return_button_waterlog">Back</string>
     <string name="waterlog_header">WaterLog</string>
+    <string name="timerswitchinmain">Timer</string>
 
 </resources>
