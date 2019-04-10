@@ -22,9 +22,24 @@ import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.MainActivity.CHANNEL_ID;
 
 public class TimerService extends Service {
-
+String current;
+String userTimer;
+Calendar calendar;
     @Override
     public void onCreate() {
+
+         calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH));
+
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+
+         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+        Log.d(TAG, current);
+         userTimer = new String("22/26/9/3/2019");// user time will be taken from the settings page
+        Log.d(TAG, userTimer);
         autoWater();
         super.onCreate();
 
@@ -100,18 +115,9 @@ public class TimerService extends Service {
     }
 
     public void autoWater(){
-        Calendar calendar = Calendar.getInstance();
-        String year = Integer.toString(calendar.get(Calendar.YEAR));
-        String month = Integer.toString(calendar.get(Calendar.MONTH));
 
-        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
-        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
 
-        String current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
-        Log.d(TAG, current);
-        String userTimer = new String("22/20/9/3/2019");// user time will be taken from the settings page
-        Log.d(TAG, userTimer);
+
         if(current.equals(userTimer)) {
             Log.d(TAG, "strings are equal");
 
