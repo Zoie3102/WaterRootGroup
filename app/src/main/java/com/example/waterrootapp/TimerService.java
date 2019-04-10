@@ -25,46 +25,49 @@ public class TimerService extends Service {
 
     @Override
     public void onCreate() {
+        autoWater();
+        super.onCreate();
 
-        Log.d(TAG, "here");
-
-        Calendar calendar = Calendar.getInstance();
-        String year = Integer.toString(calendar.get(Calendar.YEAR));
-        String month = Integer.toString(calendar.get(Calendar.MONTH));
-
-        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
-        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
-
-       String current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
-        Log.d(TAG, current);
-       String userTimer = new String("22/10/9/3/2019");// user time will be taken from the settings page
-        Log.d(TAG, userTimer);
-        if(current.equals(userTimer)){
-            Log.d(TAG, "strings are equal");
-
-            FirebaseDatabase database2 = FirebaseDatabase.getInstance();
-            DatabaseReference commands2 = database2.getReference("commands");
+//        Log.d(TAG, "here");
 //
-            commands2.child("pumpOn").setValue(1);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-           commands2.child("pumpOn").setValue(0);
-            DatabaseReference log = database2.getReference("waterLog");
-
-            SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
-            String strDate = "Current Time : " + mdformat.format(calendar.getTime());
-            log.child(strDate).child("watered").setValue(true);
-            log.child(strDate).child("moisture").setValue(0);
-            log.child(strDate).child("duration").setValue("sec");
+//        Calendar calendar = Calendar.getInstance();
+//        String year = Integer.toString(calendar.get(Calendar.YEAR));
+//        String month = Integer.toString(calendar.get(Calendar.MONTH));
+//
+//        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+//        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+//        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+//
+//       String current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+//        Log.d(TAG, current);
+//       String userTimer = new String("22/10/9/3/2019");// user time will be taken from the settings page
+//        Log.d(TAG, userTimer);
+//        if(current.equals(userTimer)){
+//            Log.d(TAG, "strings are equal");
+//
+//            FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+//            DatabaseReference commands2 = database2.getReference("commands");
+////
+//            commands2.child("pumpOn").setValue(1);
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//           commands2.child("pumpOn").setValue(0);
+//            DatabaseReference log = database2.getReference("waterLog");
+//
+//            SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
+//            String strDate = "Current Time : " + mdformat.format(calendar.getTime());
+//            log.child(strDate).child("watered").setValue(true);
+//            log.child(strDate).child("moisture").setValue(0);
+//            log.child(strDate).child("duration").setValue("sec");
 
             //commands.child("pumpOn").setValue(0);
 
 
-        }    }
+       // }
+}
 
     @Override
     public void onDestroy() {
@@ -95,4 +98,42 @@ public class TimerService extends Service {
 
 
     }
+
+    public void autoWater(){
+        Calendar calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH));
+
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+
+        String current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+        Log.d(TAG, current);
+        String userTimer = new String("22/20/9/3/2019");// user time will be taken from the settings page
+        Log.d(TAG, userTimer);
+        if(current.equals(userTimer)) {
+            Log.d(TAG, "strings are equal");
+
+            FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+            DatabaseReference commands2 = database2.getReference("commands");
+//
+            commands2.child("pumpOn").setValue(1);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            commands2.child("pumpOn").setValue(0);
+            DatabaseReference log = database2.getReference("waterLog");
+
+            SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
+            String strDate = "Current Time : " + mdformat.format(calendar.getTime());
+            log.child(strDate).child("watered").setValue(true);
+            log.child(strDate).child("moisture").setValue(0);
+            log.child(strDate).child("duration").setValue("sec");
+        }
+
+        }
+
 }
