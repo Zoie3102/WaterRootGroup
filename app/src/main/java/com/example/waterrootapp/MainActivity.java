@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import static android.support.constraint.Constraints.TAG;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -40,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
-        Calendar myCalendar =  Calendar.getInstance();
 
-        String dateNow = DateFormat.getDateInstance().format(myCalendar.getTime());
 
         Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
         timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -71,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this,TimerService.class);
 
                     stopService(intent);
+                   // Log.d(TAG, "service off ");
+
                 }
 
 
@@ -147,6 +148,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
      public void onWater(View v){
+
+         Calendar calendar = Calendar.getInstance();
+         String year = Integer.toString(calendar.get(Calendar.YEAR));
+         String month = Integer.toString(calendar.get(Calendar.MONTH));
+
+         String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+         String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+         String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+
+         String current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+         Toast.makeText(getApplicationContext(),current,Toast.LENGTH_SHORT).show();
 
 
          TextView output= (TextView) findViewById(R.id.nextWater);
