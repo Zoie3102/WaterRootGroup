@@ -38,7 +38,7 @@ Calendar calendar;
 
          current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
         Log.d(TAG, current);
-         userTimer = new String("22/26/9/3/2019");// user time will be taken from the settings page
+         userTimer = new String("8/30/10/3/2019");// user time will be taken from the settings page
         Log.d(TAG, userTimer);
         autoWater();
         super.onCreate();
@@ -118,6 +118,8 @@ Calendar calendar;
 
 
 
+
+
         if(current.equals(userTimer)) {
             Log.d(TAG, "strings are equal");
 
@@ -125,11 +127,7 @@ Calendar calendar;
             DatabaseReference commands2 = database2.getReference("commands");
 //
             commands2.child("pumpOn").setValue(1);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
             commands2.child("pumpOn").setValue(0);
             DatabaseReference log = database2.getReference("waterLog");
 
@@ -140,6 +138,13 @@ Calendar calendar;
             log.child(strDate).child("duration").setValue("sec");
         }
 
+
+
+
+
         }
 
-}
+
+    }
+
+
