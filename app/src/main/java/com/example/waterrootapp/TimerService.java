@@ -193,7 +193,7 @@ Calendar calendar;
 
 
                     try {
-                    sleep(10000);
+                    sleep(60000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
