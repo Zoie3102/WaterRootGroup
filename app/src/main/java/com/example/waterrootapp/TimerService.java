@@ -28,19 +28,22 @@ Calendar calendar;
     @Override
     public void onCreate() {
 
-         calendar = Calendar.getInstance();
-        String year = Integer.toString(calendar.get(Calendar.YEAR));
-        String month = Integer.toString(calendar.get(Calendar.MONTH));
+        thread p = new thread();
+       new Thread(p).start();
 
-        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
-        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
-
-         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
-        Log.d(TAG, current);
-         userTimer = new String("8/30/10/3/2019");// user time will be taken from the settings page
-        Log.d(TAG, userTimer);
-        autoWater();
+//         calendar = Calendar.getInstance();
+//        String year = Integer.toString(calendar.get(Calendar.YEAR));
+//        String month = Integer.toString(calendar.get(Calendar.MONTH));
+//
+//        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+//        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+//        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+//
+//         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+//        Log.d(TAG, current);
+      userTimer = new String("14/31/12/3/2019");// user time will be taken from the settings page
+//        Log.d(TAG, userTimer);
+//        autoWater();
         super.onCreate();
 
 //        Log.d(TAG, "here");
@@ -128,6 +131,8 @@ Calendar calendar;
 //
             commands2.child("pumpOn").setValue(1);
 
+//
+
             commands2.child("pumpOn").setValue(0);
             DatabaseReference log = database2.getReference("waterLog");
 
@@ -142,9 +147,71 @@ Calendar calendar;
 
 
 
+
+
+
+
         }
 
+    class thread extends Thread{
 
+        //int seconds;
+
+//        thread(){
+//
+//            calendar = Calendar.getInstance();
+//            String year = Integer.toString(calendar.get(Calendar.YEAR));
+//            String month = Integer.toString(calendar.get(Calendar.MONTH));
+//
+//            String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+//            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+//            String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+//
+//            current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+//        }
+        @Override
+        public void run() {
+
+            while(true){
+
+                calendar = Calendar.getInstance();
+            String year = Integer.toString(calendar.get(Calendar.YEAR));
+            String month = Integer.toString(calendar.get(Calendar.MONTH));
+
+            String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+            String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+
+            current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+
+                if(current.equals(userTimer)){
+                    autoWater();
+
+                }
+
+
+
+
+                    try {
+                    sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+
+
+        }
     }
+
+
+
+
+
+
+}
 
 
