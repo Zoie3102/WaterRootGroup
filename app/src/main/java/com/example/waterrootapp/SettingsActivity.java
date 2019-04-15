@@ -9,6 +9,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -22,6 +23,7 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -137,6 +139,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
         super.onCreate(savedInstanceState);
         setupActionBar();
 
+        sendDuration();
+        sendUserDate();
 
 
 
@@ -145,6 +149,26 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 
 
 
+
+    }
+
+
+
+
+    public void sendDuration(){
+        Intent intent = new Intent ( SettingsActivity.this, TimerService.class );
+        EditText et = findViewById(R.id.waterDuration);
+        intent.putExtra ( "Duration", et.getText().toString() );
+        startActivity(intent);
+        finish();
+    }
+
+    public void sendUserDate(){
+        Intent intent = new Intent ( SettingsActivity.this, TimerService.class );
+        EditText et = findViewById(R.id.setTimer);
+        intent.putExtra ( "userTime", et.getText().toString() );
+        startActivity(intent);
+        finish();
     }
 
 
@@ -302,4 +326,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
             return super.onOptionsItemSelected(item);
         }
     }
+
+
 }

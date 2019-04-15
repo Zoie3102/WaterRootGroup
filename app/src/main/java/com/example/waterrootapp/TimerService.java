@@ -41,7 +41,7 @@ Calendar calendar;
 //
 //         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
 //        Log.d(TAG, current);
-      userTimer = new String("14/31/12/3/2019");// user time will be taken from the settings page
+      userTimer = new String("11/19/15/3/2019");// user time will be taken from the settings page
 //        Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
@@ -87,6 +87,29 @@ Calendar calendar;
        // }
 }
 
+
+    protected int getDuration(@Nullable Intent intent) {
+
+        String duration = intent.getStringExtra("Duration");
+        int durationSeconds = Integer.parseInt(duration);
+        Log.d(TAG, duration);
+return durationSeconds;
+        //  Download File logic
+
+    }
+
+    protected String getUserDate(@Nullable Intent intent) {
+
+        String userDate = intent.getStringExtra("userDate");
+        Log.d(TAG, userDate);
+        return userDate;
+        //  Download File logic
+
+    }
+
+
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -130,6 +153,11 @@ Calendar calendar;
             DatabaseReference commands2 = database2.getReference("commands");
 //
             commands2.child("pumpOn").setValue(1);
+            try {
+                thread.sleep(6000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 //
 
@@ -187,6 +215,7 @@ Calendar calendar;
                 if(current.equals(userTimer)){
                     autoWater();
 
+
                 }
 
 
@@ -206,6 +235,8 @@ Calendar calendar;
 
         }
     }
+
+
 
 
 

@@ -19,7 +19,8 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:summary="@string/timer_description"
-        android:title="@string/set_timer" />
+        android:title="@string/set_timer"
+        android:id="@+id/setTimer"/>
     <SwitchPreference
         android:defaultValue="false"
         android:key="auto_log"
@@ -39,5 +40,12 @@
         android:key="instructions_switch"
         android:summary="@string/instructions_summary"
         android:title="@string/instructions_switch" />
+    <EditTextPreference
+        android:defaultValue="Default value"
+        android:key="water_duration"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Duration of automatic watering"
+        android:id="@+id/waterDuration"/>
 
 </PreferenceScreen>
