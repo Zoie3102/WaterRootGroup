@@ -37,11 +37,11 @@ Calendar calendar;
 //
 //        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
 //        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-//        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+//        String minute = Integer.toString(cxalendar.get(Calendar.MINUTE));
 //
 //         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
 //        Log.d(TAG, current);
-      userTimer = new String("11/19/15/3/2019");// user time will be taken from the settings page
+      userTimer = new String("13/39/16/4/2019");// user time will be taken from the settings page
 //        Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
@@ -204,7 +204,7 @@ return durationSeconds;
 
                 calendar = Calendar.getInstance();
             String year = Integer.toString(calendar.get(Calendar.YEAR));
-            String month = Integer.toString(calendar.get(Calendar.MONTH));
+            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
 
             String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
             String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
