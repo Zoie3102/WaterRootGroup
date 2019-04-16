@@ -41,7 +41,7 @@ Calendar calendar;
 //
 //         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
 //        Log.d(TAG, current);
-      userTimer = new String("13/39/16/4/2019");// user time will be taken from the settings page
+      userTimer = new String("14/42/16/4/2019");// user time will be taken from the settings page
 //        Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
@@ -200,20 +200,28 @@ return durationSeconds;
         @Override
         public void run() {
 
-            while(true){
-
-                calendar = Calendar.getInstance();
+            calendar = Calendar.getInstance();
             String year = Integer.toString(calendar.get(Calendar.YEAR));
             String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
 
-            String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            String stringday = Integer.toString(day);
+
+
             String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
             String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+            current = new String(hour + "/" + minute + "/" +stringday + "/" +month + "/" + year);
 
-            current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
+            while(true){
+
+
+
+
 
                 if(current.equals(userTimer)){
                     autoWater();
+                    day= day + 1;
+
 
 
                 }
@@ -226,6 +234,8 @@ return durationSeconds;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+
 
 
 
