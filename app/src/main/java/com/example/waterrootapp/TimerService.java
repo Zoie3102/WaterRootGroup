@@ -221,6 +221,11 @@ return durationSeconds;
                 if(current.equals(userTimer)){
                     autoWater();
                     day= day + 1;
+                     stringday = Integer.toString(day);
+                    current = new String(hour + "/" + minute + "/" +stringday + "/" +month + "/" + year);
+
+
+
 
 
 
