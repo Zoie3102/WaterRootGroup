@@ -25,6 +25,17 @@ public class TimerService extends Service {
 String current;
 String userTimer;
 Calendar calendar;
+
+
+
+    int userhour = 8;
+    int userminute = 21;
+
+    int userday = 17;
+
+    int usermonth = 4;
+
+    int useryear = 2019;
     @Override
     public void onCreate() {
 
@@ -41,7 +52,11 @@ Calendar calendar;
 //
 //         current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
 //        Log.d(TAG, current);
-      userTimer = new String("14/42/16/4/2019");// user time will be taken from the settings page
+
+
+
+
+        userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);// user time will be taken from the settings page
 //        Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
@@ -181,6 +196,27 @@ return durationSeconds;
 
         }
 
+
+        public String getTime(){
+            calendar = Calendar.getInstance();
+            String year = Integer.toString(calendar.get(Calendar.YEAR));
+            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            String stringday = Integer.toString(day);
+
+
+            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+            int minutes = calendar.get(Calendar.MINUTE);
+
+            String stringminute = Integer.toString(minutes);
+            current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
+            return current;
+
+
+        }
+
+
     class thread extends Thread{
 
         //int seconds;
@@ -200,19 +236,27 @@ return durationSeconds;
         @Override
         public void run() {
 
-            calendar = Calendar.getInstance();
-            String year = Integer.toString(calendar.get(Calendar.YEAR));
-            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+            getTime();
 
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            String stringday = Integer.toString(day);
+//            calendar = Calendar.getInstance();
+//            String year = Integer.toString(calendar.get(Calendar.YEAR));
+//            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+//
+//            int day = calendar.get(Calendar.DAY_OF_MONTH);
+//            String stringday = Integer.toString(day);
+//
+//
+//            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+//            int minutes = calendar.get(Calendar.MINUTE);
+//
+//            String stringminute = Integer.toString(minutes);
+//            current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
 
-
-            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-            String minute = Integer.toString(calendar.get(Calendar.MINUTE));
-            current = new String(hour + "/" + minute + "/" +stringday + "/" +month + "/" + year);
+            Log.d(TAG, current);
 
             while(true){
+
+                getTime();
 
 
 
@@ -220,9 +264,19 @@ return durationSeconds;
 
                 if(current.equals(userTimer)){
                     autoWater();
-                    day= day + 1;
-                     stringday = Integer.toString(day);
-                    current = new String(hour + "/" + minute + "/" +stringday + "/" +month + "/" + year);
+
+
+                    userminute++;
+
+                  //  day= day + 1;
+                 //    stringday = Integer.toString(day);
+                    //userday++;
+                   // current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
+                    Log.d(TAG, getTime()); 
+
+
+                    userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);
+                    Log.d(TAG, Integer.toString(userminute));
 
 
 
@@ -235,7 +289,7 @@ return durationSeconds;
 
 
                     try {
-                    sleep(60000);
+                    sleep(10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
