@@ -266,7 +266,7 @@ return durationSeconds;
                     autoWater();
 
 
-                    userminute++;
+                    userday++;
 
                   //  day= day + 1;
                  //    stringday = Integer.toString(day);
@@ -289,7 +289,7 @@ return durationSeconds;
 
 
                     try {
-                    sleep(10000);
+                    sleep(60000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
