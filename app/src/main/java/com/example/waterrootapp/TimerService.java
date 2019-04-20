@@ -4,12 +4,15 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.support.annotation.Nullable;
+import android.os.Bundle;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,16 +31,27 @@ Calendar calendar;
 
 
 
-    int userhour = 8;
-    int userminute = 21;
+    int userhour = 1;
+    int userminute = 0;
 
-    int userday = 17;
+    int userday = 19;
 
     int usermonth = 4;
 
     int useryear = 2019;
-    @Override
-    public void onCreate() {
+
+
+
+   @Override
+    public void onCreate( ) {
+
+       getDuration();
+       Log.d(TAG, Integer.toString(getDuration()));
+
+
+
+
+
 
         thread p = new thread();
        new Thread(p).start();
@@ -103,13 +117,13 @@ Calendar calendar;
 }
 
 
-    protected int getDuration(@Nullable Intent intent) {
+   protected int getDuration() {
 
-        String duration = intent.getStringExtra("Duration");
-        int durationSeconds = Integer.parseInt(duration);
-        Log.d(TAG, duration);
-return durationSeconds;
-        //  Download File logic
+       Intent int1 = new Intent();
+       int duratttttttion = Integer.parseInt(int1.getStringExtra("duration"));
+
+       return duratttttttion;
+
 
     }
 
@@ -139,6 +153,10 @@ return durationSeconds;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        if(intent != null){
+            int position = intent.getIntExtra("position", 0);
+        }
+
 
 
         Intent notificationIntent = new Intent(this,MainActivity.class);
@@ -154,6 +172,12 @@ return durationSeconds;
 
 
     }
+//   public String getDuration(){
+//    String data = getIntent().getExtras().getString("defaultKey");
+//    return data;
+//
+//    }
+//
 
     public void autoWater(){
 
@@ -255,6 +279,7 @@ return durationSeconds;
             Log.d(TAG, current);
 
             while(true){
+                Log.d(TAG, getTime());
 
                 getTime();
 
@@ -289,7 +314,7 @@ return durationSeconds;
 
 
                     try {
-                    sleep(60000);
+                    sleep(30000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

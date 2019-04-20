@@ -13,6 +13,7 @@ import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -137,10 +138,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupActionBar();
 
-        sendDuration();
-        sendUserDate();
+       setupActionBar();
+
+
+
 
 
 
@@ -155,21 +157,22 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 
 
 
-    public void sendDuration(){
-        Intent intent = new Intent ( SettingsActivity.this, TimerService.class );
-        EditText et = findViewById(R.id.waterDuration);
-        intent.putExtra ( "Duration", et.getText().toString() );
-        startActivity(intent);
-        finish();
-    }
-
-    public void sendUserDate(){
-        Intent intent = new Intent ( SettingsActivity.this, TimerService.class );
-        EditText et = findViewById(R.id.setTimer);
-        intent.putExtra ( "userTime", et.getText().toString() );
-        startActivity(intent);
-        finish();
-    }
+//    public void sendDuration(){
+//
+//        Intent intent =
+//                new Intent(this, TimerService.class );
+//        intent.putExtra( "Duration", 6000 );
+//        startActivity( intent );
+////
+//    }
+//
+//    public void sendUserDate(){
+//        Intent intent = new Intent ( SettingsActivity.this, TimerService.class );
+//        EditText et = findViewById(R.id.setTimer);
+//        intent.putExtra ( "userTime", et.getText().toString() );
+//        startActivity(intent);
+//        finish();
+//    }
 
 
 
@@ -329,3 +332,5 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 
 
 }
+
+

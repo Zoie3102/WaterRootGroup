@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
+//                    Intent intent2 = new Intent(this,TimerService.class);
+//                    intent2.putExtra("position",4);
+//                    MainActivity.startService(intent2);
+
                     Intent intent = new Intent(MainActivity.this,TimerService.class);
 
 
