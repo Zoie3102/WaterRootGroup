@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import static android.support.constraint.Constraints.TAG;
+
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-    Boolean firstTime;
+     public static boolean firstTime;
 
     @Override    protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, 1000);
+            }, 10000);
         }
         else {
             Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);

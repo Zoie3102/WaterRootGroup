@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import static android.support.constraint.Constraints.TAG;
+import static com.example.waterrootapp.SplashScreenActivity.firstTime;
 
 
 public class SettingsActivity2 extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class SettingsActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings2);
 
-        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
+        Switch timerSwitch = (Switch) findViewById(R.id.switch1);
         timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -53,7 +54,9 @@ public class SettingsActivity2 extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
-                    Log.d(TAG, "onCheckedChanged: on");
+                    firstTime = true;
+
+
 
 //
                 }
