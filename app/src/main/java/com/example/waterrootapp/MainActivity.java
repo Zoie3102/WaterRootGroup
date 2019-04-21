@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSetting (View v){
-        Intent startNewActivity = new Intent(MainActivity.this,SettingsActivity.class);
+        Intent startNewActivity = new Intent(MainActivity.this,SettingsActivity2.class);
         startActivity(startNewActivity);
 
 

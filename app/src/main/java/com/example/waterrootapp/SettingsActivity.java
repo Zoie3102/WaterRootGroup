@@ -3,16 +3,19 @@ package com.example.waterrootapp;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
@@ -32,6 +35,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
+import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -50,8 +54,7 @@ import static android.support.constraint.Constraints.TAG;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends AppCompatPreferenceActivity{
-
+public class SettingsActivity extends AppCompatPreferenceActivity {
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -135,17 +138,15 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
     }
 
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       setupActionBar();
-
-
-
-
-
-
+        setupActionBar();
 
 
 
@@ -154,6 +155,30 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 
     }
 
+    public static class SettingsFragment extends PreferenceFragment {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+          //  addPreferencesFromResource(R.xml.pref_notification);
+
+            SwitchPreference vibrateSwitch = (SwitchPreference) findPreference("instructions_switch");
+
+            if (vibrateSwitch != null) {
+                vibrateSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(Preference arg0, Object isVibrateOnObject) {
+                        boolean isVibrateOn = (Boolean) isVibrateOnObject;
+                        if (isVibrateOn) {
+                            Log.d(TAG, "on");
+                        }
+                        return true;
+                    }
+                });
+            }
+        }
+
+    }
 
 
 
@@ -173,17 +198,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
 //        startActivity(intent);
 //        finish();
 //    }
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -236,7 +250,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
                 || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
                 || NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
-
 
 
     /**
@@ -329,6 +342,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity{
             return super.onOptionsItemSelected(item);
         }
     }
+
+
 
 
 }

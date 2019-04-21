@@ -116,4 +116,13 @@
     <string name="waterlog_header">WaterLog</string>
     <string name="timerswitchinmain">Timer</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time_of_water">Time of water</string>
+    <string name="date_of_water">Date of water</string>
+    <string name="timer_on_off">Turn timer on or off</string>
+    <string name="instructions_switch_on_off">Show instructions screen on startup</string>
+    <string name="duration_switch_on_off">Duration of automatic watering</string>
+    <string name="settings_header_content">Settings</string>
+
 </resources>

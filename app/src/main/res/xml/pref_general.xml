@@ -37,9 +37,10 @@
         android:title="@string/clear_log" />
     <SwitchPreference
         android:defaultValue="false"
-        android:key="instructions_switch"
+        android:key="@string/instructions_switch"
         android:summary="@string/instructions_summary"
-        android:title="@string/instructions_switch" />
+        android:title="@string/instructions_switch"
+        android:id="@+id/instructions_switch"/>
     <EditTextPreference
         android:defaultValue="Default value"
         android:key="water_duration"
