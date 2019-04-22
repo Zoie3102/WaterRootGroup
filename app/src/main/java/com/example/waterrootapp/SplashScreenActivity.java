@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import static android.support.constraint.Constraints.TAG;
+import static com.example.waterrootapp.SettingsActivity2.getSwitchOn;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
+    public static SharedPreferences sharedPreferences;
      public static boolean firstTime;
+     public static boolean switchon = false;
+
 
     @Override    protected void onCreate(Bundle savedInstanceState) {
 
@@ -22,12 +25,43 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
         sharedPreferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+
 
         firstTime = sharedPreferences.getBoolean("firstTime",true);
 
-        if (firstTime==true){
+
+
+
+//        if (switchon==true){
+//            new Handler().postDelayed(new Runnable() {
+//                @Override                public void run() {
+//
+//
+//                    Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                }
+//            }, 10000);
+//        }
+
+if(getSwitchOn()){
+    new Handler().postDelayed(new Runnable() {
+        @Override                public void run() {
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            firstTime = false;
+            editor.putBoolean("firstTime",firstTime);
+            editor.apply();
+
+            Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+    }, 10000);
+}
+
+        else if (firstTime){
             new Handler().postDelayed(new Runnable() {
                 @Override                public void run() {
 

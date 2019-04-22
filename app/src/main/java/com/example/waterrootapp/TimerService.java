@@ -31,10 +31,10 @@ Calendar calendar;
 
 
 
-    int userhour = 1;
-    int userminute = 0;
+    int userhour = 11;
+    int userminute = 12;
 
-    int userday = 19;
+    int userday = 22;
 
     int usermonth = 4;
 
@@ -45,8 +45,6 @@ Calendar calendar;
    @Override
     public void onCreate( ) {
 
-       getDuration();
-       Log.d(TAG, Integer.toString(getDuration()));
 
 
 
@@ -117,15 +115,7 @@ Calendar calendar;
 }
 
 
-   protected int getDuration() {
 
-       Intent int1 = new Intent();
-       int duratttttttion = Integer.parseInt(int1.getStringExtra("duration"));
-
-       return duratttttttion;
-
-
-    }
 
     protected String getUserDate(@Nullable Intent intent) {
 
