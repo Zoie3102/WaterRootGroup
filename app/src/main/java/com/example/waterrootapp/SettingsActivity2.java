@@ -1,11 +1,14 @@
 package com.example.waterrootapp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import static android.support.constraint.Constraints.TAG;
@@ -16,13 +19,21 @@ import static com.example.waterrootapp.SplashScreenActivity.switchon;
 
 public class SettingsActivity2 extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
-
+   public  SharedPreferences myPrefs;
+    public  SharedPreferences.Editor editor2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings2);
+
+
+
+        sharedPreferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        myPrefs = getSharedPreferences("prefID", Context.MODE_PRIVATE);
+          editor2 = myPrefs.edit();
+
 
 
 
@@ -59,11 +70,15 @@ public class SettingsActivity2 extends AppCompatActivity {
 
 
         Switch instructionsSwitch = (Switch) findViewById(R.id.switch2);
-
+if(instructionsSwitch.isChecked()){
+    switchon = true;
+}
+else {
+    switchon = false;
+}
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         boolean silent = settings.getBoolean("switchkey", false);
         instructionsSwitch.setChecked(silent);
-
 
 
 
@@ -72,17 +87,32 @@ public class SettingsActivity2 extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
-                    switchon = true;
+
+                    editor2.putBoolean("switchon", true);
+                    editor2.apply();
+                    Log.d(TAG, Boolean.toString(myPrefs.getBoolean("switchon", true)));
 
 
 
-
-
-
+//                    switchon = true;
 //
+//                    //switchon = true;
+//                    Log.d(TAG, Boolean.toString(getSwitchOn(mainView)));
+
+
+
+
+
+
+
                 }
                 else{
-                    Log.d(TAG, "onCheckedChanged: off");
+
+                    editor2.putBoolean("switchon", false);
+                    editor2.apply();
+                    Log.d(TAG, Boolean.toString(myPrefs.getBoolean("switchon", true)));
+
+
 
 
                 }
@@ -107,15 +137,9 @@ public class SettingsActivity2 extends AppCompatActivity {
 
     }
 
-    public static boolean getSwitchOn(){
 
 
-        if(switchon){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
+
 
 }

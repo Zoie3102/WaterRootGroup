@@ -22,6 +22,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import static android.support.constraint.Constraints.TAG;
+import static com.example.waterrootapp.SplashScreenActivity.switchon;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     public static String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
