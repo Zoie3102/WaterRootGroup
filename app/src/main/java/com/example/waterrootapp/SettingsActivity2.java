@@ -39,6 +39,10 @@ public class SettingsActivity2 extends AppCompatActivity {
 
 
         Switch timerSwitch = (Switch) findViewById(R.id.switch1);
+
+        SharedPreferences settings2 = getSharedPreferences(PREFS_NAME, 0);
+        boolean silent2 = settings2.getBoolean("timerkey", false);
+        timerSwitch.setChecked(silent2);
         timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
