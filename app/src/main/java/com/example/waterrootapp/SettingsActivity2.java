@@ -60,6 +60,10 @@ public class SettingsActivity2 extends AppCompatActivity {
                     // Log.d(TAG, "service off ");
 
                 }
+                SharedPreferences settings2 = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings2.edit();
+                editor.putBoolean("timerkey", isChecked);
+                editor.commit();
 
 
             }
