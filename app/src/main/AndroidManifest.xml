@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity2"></activity>
+        <activity
+            android:name=".WaterLogActivity2"
+            android:label="@string/title_activity_water_log2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SettingsActivity2" />
         <activity
             android:name=".WaterLogActivity"
             android:label="@string/title_activity_water_log"
