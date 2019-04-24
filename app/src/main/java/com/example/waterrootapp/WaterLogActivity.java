@@ -7,6 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class WaterLogActivity extends AppCompatActivity {
 
@@ -16,6 +20,8 @@ public class WaterLogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_water_log);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        TextView textOutput=findViewById(R.id.textOutput);
+        printWaterLog(textOutput);
 
 
     }
@@ -24,6 +30,12 @@ public class WaterLogActivity extends AppCompatActivity {
         Intent startNewActivity = new Intent(WaterLogActivity.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
 
+
+    }
+    public void printWaterLog(TextView output){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference waterLog = database.getReference("waterLog");
+        output.setText(waterLog.toString());
 
     }
 }
