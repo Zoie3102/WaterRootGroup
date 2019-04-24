@@ -46,48 +46,48 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
-        timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-
-//                    Intent intent2 = new Intent(this,TimerService.class);
-//                    intent2.putExtra("position",4);
-//                    MainActivity.startService(intent2);
-
-                    Intent intent = new Intent(MainActivity.this,TimerService.class);
-
-
-                    startService(intent);
-
-
-//                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                    DatabaseReference commands = database.getReference("commands");
-////
-//                    commands.child("pumpOn").setValue(1);
-//                    try {
-//                        Thread.sleep(2000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    commands.child("pumpOn").setValue(0);
-                }
-                else{
-                    Intent intent = new Intent(MainActivity.this,TimerService.class);
-
-                    stopService(intent);
-                   // Log.d(TAG, "service off ");
-
-                }
-
-
-            }
-
-
-        });
-
-
+//        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
+//        timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//
+////                    Intent intent2 = new Intent(this,TimerService.class);
+////                    intent2.putExtra("position",4);
+////                    MainActivity.startService(intent2);
+//
+//                    Intent intent = new Intent(MainActivity.this,TimerService.class);
+//
+//
+//                    startService(intent);
+//
+//
+////                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+////                    DatabaseReference commands = database.getReference("commands");
+//////
+////                    commands.child("pumpOn").setValue(1);
+////                    try {
+////                        Thread.sleep(2000);
+////                    } catch (InterruptedException e) {
+////                        e.printStackTrace();
+////                    }
+////                    commands.child("pumpOn").setValue(0);
+//                }
+//                else{
+//                    Intent intent = new Intent(MainActivity.this,TimerService.class);
+//
+//                    stopService(intent);
+//                   // Log.d(TAG, "service off ");
+//
+//                }
+//
+//
+//            }
+//
+//
+//        });
+//
+//
 
 
 
