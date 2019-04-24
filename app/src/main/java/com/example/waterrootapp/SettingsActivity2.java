@@ -6,11 +6,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
+
+import java.sql.Time;
+import java.util.Timer;
+
 import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.SplashScreenActivity.firstTime;
 import static com.example.waterrootapp.SplashScreenActivity.sharedPreferences;
@@ -39,6 +46,10 @@ public class SettingsActivity2 extends AppCompatActivity {
 
 
         Switch timerSwitch = (Switch) findViewById(R.id.switch1);
+
+        SharedPreferences settings2 = getSharedPreferences(PREFS_NAME, 0);
+        boolean silent2 = settings2.getBoolean("timerkey", false);
+        timerSwitch.setChecked(silent2);
         timerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -60,6 +71,10 @@ public class SettingsActivity2 extends AppCompatActivity {
                     // Log.d(TAG, "service off ");
 
                 }
+                SharedPreferences settings2 = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings2.edit();
+                editor.putBoolean("timerkey", isChecked);
+                editor.commit();
 
 
             }
@@ -128,6 +143,18 @@ else {
 
 
         });
+        final EditText timeOfWater =  findViewById(R.id.editText);
+
+
+
+        timeOfWater.addTextChangedListener(new TextChangedListener<EditText>(timeOfWater) {
+            @Override
+            public void onTextChanged(EditText target, Editable s) {
+                String time = timeOfWater.getText().toString();
+                Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
+                timeIntent.putExtra("timeofday", time);
+            }
+        });
     }
 
     public void onReturn (View v){
@@ -137,6 +164,27 @@ else {
 
     }
 
+
+    public abstract class TextChangedListener<T> implements TextWatcher {
+        private T target;
+
+        public TextChangedListener(T target) {
+            this.target = target;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            this.onTextChanged(target, s);
+        }
+
+        public abstract void onTextChanged(T target, Editable s);
+    }
 
 
 
