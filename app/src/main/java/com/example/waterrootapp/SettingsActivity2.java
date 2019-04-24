@@ -171,6 +171,64 @@ else {
 
 
         });
+
+
+
+
+        final EditText dateOfWater =  findViewById(R.id.editText2);
+
+
+        SharedPreferences settings5 = getSharedPreferences(PREFS_NAME, 0);
+        String silent5 = settings.getString("dateofwaterkey", null);
+        dateOfWater.setText(silent5);
+
+        dateOfWater.addTextChangedListener(new TextChangedListener<EditText>(dateOfWater) {
+            @Override
+            public void onTextChanged(EditText target, Editable s) {
+                String date = dateOfWater.getText().toString();
+                Log.d(TAG, date);
+                Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
+
+                timeIntent.putExtra("dateofwater", date);
+
+                SharedPreferences settings5 = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor5 = settings5.edit();
+                editor5.putString("dateofwaterkey", date);
+                editor5.commit();
+
+            }
+
+
+
+        });
+
+        final EditText duration =  findViewById(R.id.editText3);
+
+
+        SharedPreferences settings6 = getSharedPreferences(PREFS_NAME, 0);
+        String silent6 = settings6.getString("durationkey", null);
+        duration.setText(silent6);
+
+        duration.addTextChangedListener(new TextChangedListener<EditText>(duration) {
+            @Override
+            public void onTextChanged(EditText target, Editable s) {
+                String durationstring = duration.getText().toString();
+                Log.d(TAG, durationstring);
+                Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
+
+                timeIntent.putExtra("durationintentkey", durationstring);
+
+                SharedPreferences settings6 = getSharedPreferences(PREFS_NAME, 0);
+                SharedPreferences.Editor editor6 = settings6.edit();
+                editor6.putString("durationkey", durationstring);
+                editor6.commit();
+
+            }
+
+
+
+        });
+
     }
 
     public void onReturn (View v){
