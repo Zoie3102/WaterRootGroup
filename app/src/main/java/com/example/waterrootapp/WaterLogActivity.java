@@ -46,7 +46,8 @@ public class WaterLogActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-//                text=dataSnapshot.getValue().toString();
+                waterLogText=dataSnapshot.getValue().toString();
+                dataSnapshot.getChildren();
                 // ...
             }
 
@@ -59,7 +60,7 @@ public class WaterLogActivity extends AppCompatActivity {
         };
         waterLog.addValueEventListener(postListener);
 //        Query test=waterLog;
-//        output.setText(test.toString());
+        output.setText(waterLogText);
 
     }
 }
