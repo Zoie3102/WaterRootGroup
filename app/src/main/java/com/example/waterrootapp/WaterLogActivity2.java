@@ -14,25 +14,29 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-public class WaterLogActivity extends AppCompatActivity {
 
-    private static String waterLogText="";
+public class WaterLogActivity2 extends AppCompatActivity {
+    public static String waterLogText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_water_log);
+        setContentView(R.layout.activity_water_log2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView textOutput=findViewById(R.id.textOutput);
         printWaterLog(textOutput);
-
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
     }
-
     public void onBack (View v){
-        Intent startNewActivity = new Intent(WaterLogActivity.this,AdditionalFeatures.class);
+        Intent startNewActivity = new Intent(WaterLogActivity2.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
 
 
