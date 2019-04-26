@@ -31,10 +31,10 @@ Calendar calendar;
 
 
 
-    int userhour = 11;
-    int userminute = 12;
+    int userhour = 14;
+    int userminute = 38;
 
-    int userday = 22;
+    int userday = 26;
 
     int usermonth = 4;
 
@@ -44,6 +44,9 @@ Calendar calendar;
 
    @Override
     public void onCreate( ) {
+//Intent timeIntent = getIntent();
+      // String songUrl = timeIntent.getStringExtra("YOUR_KEY_SONG_NAME");
+
 
 
 
@@ -68,7 +71,7 @@ Calendar calendar;
 
 
 
-        userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);// user time will be taken from the settings page
+       userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);// user time will be taken from the settings page
 //        Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
@@ -132,6 +135,7 @@ Calendar calendar;
     @Override
     public void onDestroy() {
         super.onDestroy();
+        thread.interrupted();
     }
 
     @Nullable
@@ -198,6 +202,9 @@ Calendar calendar;
             log.child(strDate).child("watered").setValue(true);
             log.child(strDate).child("moisture").setValue(0);
             log.child(strDate).child("duration").setValue("sec");
+            log.child(strDate).child("manual or automatic").setValue("auto");
+
+
         }
 
 
@@ -304,7 +311,7 @@ Calendar calendar;
 
 
                     try {
-                    sleep(30000);
+                    sleep(45000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -66,10 +66,10 @@ public class SettingsActivity2 extends AppCompatActivity {
 
 
          }
-                else{
-                    Intent intent = new Intent(SettingsActivity2.this,TimerService.class);
+                else if(isChecked == false){
+                    Intent intent2 = new Intent(SettingsActivity2.this,TimerService.class);
 
-                    stopService(intent);
+                    stopService(intent2);
                     // Log.d(TAG, "service off ");
 
                 }
@@ -160,6 +160,7 @@ else {
                 Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
 
                 timeIntent.putExtra("timeofday", time);
+                startService(timeIntent);
 
                 SharedPreferences settings4 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor4 = settings4.edit();
@@ -187,9 +188,10 @@ else {
             public void onTextChanged(EditText target, Editable s) {
                 String date = dateOfWater.getText().toString();
                 Log.d(TAG, date);
-                Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
+                Intent dateIntent = new Intent(SettingsActivity2.this, TimerService.class);
 
-                timeIntent.putExtra("dateofwater", date);
+                dateIntent.putExtra("dateofwater", date);
+                startService(dateIntent);
 
                 SharedPreferences settings5 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor5 = settings5.edit();
@@ -214,9 +216,10 @@ else {
             public void onTextChanged(EditText target, Editable s) {
                 String durationstring = duration.getText().toString();
                 Log.d(TAG, durationstring);
-                Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
+                Intent durationIntent = new Intent(SettingsActivity2.this, TimerService.class);
 
-                timeIntent.putExtra("durationintentkey", durationstring);
+                durationIntent.putExtra("durationintentkey", durationstring);
+                startService(durationIntent);
 
                 SharedPreferences settings6 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor6 = settings6.edit();
