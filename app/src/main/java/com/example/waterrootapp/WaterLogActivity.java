@@ -47,7 +47,7 @@ public class WaterLogActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 waterLogText=dataSnapshot.getValue().toString();
-                dataSnapshot.getChildren();
+                waterLogText=dataSnapshot.getChildren().toString();
                 // ...
             }
 

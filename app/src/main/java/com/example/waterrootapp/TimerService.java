@@ -31,10 +31,10 @@ Calendar calendar;
 
 
 
-    int userhour = 14;
-    int userminute = 38;
+    int userhour = 18;
+    int userminute = 55;
 
-    int userday = 26;
+    int userday = 28;
 
     int usermonth = 4;
 
@@ -310,7 +310,7 @@ Calendar calendar;
 
 
 
-                    try {
+                try {
                     sleep(45000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
