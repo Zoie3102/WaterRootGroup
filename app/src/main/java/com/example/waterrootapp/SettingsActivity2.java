@@ -260,6 +260,7 @@ else {
 
             this.onTextChanged(target, s);
 
+
         }
 
         public abstract void onTextChanged(T target, Editable s);
