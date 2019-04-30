@@ -22,9 +22,18 @@ import java.util.Timer;
 
 import static android.provider.Contacts.SettingsColumns.KEY;
 import static android.support.constraint.Constraints.TAG;
+import static com.example.waterrootapp.MainActivity.time;
 import static com.example.waterrootapp.SplashScreenActivity.firstTime;
 import static com.example.waterrootapp.SplashScreenActivity.sharedPreferences;
 import static com.example.waterrootapp.SplashScreenActivity.switchon;
+import static com.example.waterrootapp.TimerService.userduration;
+import static com.example.waterrootapp.TimerService.userhour;
+import static com.example.waterrootapp.TimerService.userminute;
+import static com.example.waterrootapp.TimerService.usermonth;
+import static com.example.waterrootapp.TimerService.userday;
+import static com.example.waterrootapp.TimerService.useryear;
+
+
 
 
 public class SettingsActivity2 extends AppCompatActivity {
@@ -156,6 +165,11 @@ else {
             @Override
             public void onTextChanged(EditText target, Editable s) {
                 String time = timeOfWater.getText().toString();
+
+
+
+
+
                 Log.d(TAG, time);
                 Intent timeIntent = new Intent(SettingsActivity2.this, TimerService.class);
 
@@ -261,9 +275,45 @@ else {
             this.onTextChanged(target, s);
 
 
+
         }
 
         public abstract void onTextChanged(T target, Editable s);
+    }
+
+
+    public void onSave (View v){
+         EditText timeOfWater =  findViewById(R.id.editText);
+
+        String time = timeOfWater.getText().toString();
+
+        String[] parts = time.split(":");
+        String part1 = parts[0];
+        userhour = Integer.parseInt(part1);
+        String part2 = parts[1];
+        userminute = Integer.parseInt(part2);
+
+
+        EditText dateofWater =  findViewById(R.id.editText2);
+
+        String date = dateofWater.getText().toString();
+
+        String[] parts2 = date.split("/");
+        String part3 = parts2[0];
+        usermonth = Integer.parseInt(part3);
+        String part4 = parts2[1];
+        userday = Integer.parseInt(part4);
+
+        String part5 = parts2[2];
+        useryear = Integer.parseInt(part5);
+
+
+        EditText durationText =  findViewById(R.id.editText3);
+
+        String duration = durationText.getText().toString();
+        userduration = Integer.parseInt(duration);
+
+
     }
 
 

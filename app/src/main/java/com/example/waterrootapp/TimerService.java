@@ -23,6 +23,7 @@ import java.util.Calendar;
 
 import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.MainActivity.CHANNEL_ID;
+import static com.example.waterrootapp.MainActivity.time;
 
 public class TimerService extends Service {
 String current;
@@ -32,14 +33,15 @@ Calendar calendar;
 
 
 
-    int userhour = 14;
-    int userminute = 38;
+   public static int userhour = 13;
+    public static  int userminute = 38;
 
-    int userday = 26;
+    public static int userday = 30;
 
-    int usermonth = 4;
+    public static int usermonth = 4;
 
-    int useryear = 2019;
+    public static int useryear = 2019;
+    public static int userduration;
 
 
 
@@ -50,12 +52,20 @@ Calendar calendar;
 
 
 
+       Log.d(TAG, Integer.toString(userhour));
+       Log.d(TAG, Integer.toString(userminute));
+       Log.d(TAG, Integer.toString(userday));
+       Log.d(TAG, Integer.toString(usermonth));
+       Log.d(TAG, Integer.toString(useryear));
 
 
 
 
 
-        thread p = new thread();
+
+
+
+       thread p = new thread();
        new Thread(p).start();
 
 //         calendar = Calendar.getInstance();
@@ -188,7 +198,7 @@ Calendar calendar;
 //
             commands2.child("pumpOn").setValue(1);
             try {
-                thread.sleep(6000);
+                thread.sleep(userduration);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
