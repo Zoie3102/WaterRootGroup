@@ -214,5 +214,8 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="time_edit_hint">hr:min (exclude leading zeroes)</string>
+    <string name="date_text_hint">month/day/year</string>
+    <string name="duration_hint">Number of seconds (nearest whole number)</string>
 
 </resources>
