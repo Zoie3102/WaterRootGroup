@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Time;
 import java.util.Timer;
@@ -283,7 +284,10 @@ else {
 
 
     public void onSave (View v){
-         EditText timeOfWater =  findViewById(R.id.editText);
+
+        Toast.makeText(getApplicationContext(),"Changes Have Been Saved!",Toast.LENGTH_SHORT).show();
+
+        EditText timeOfWater =  findViewById(R.id.editText);
 
         String time = timeOfWater.getText().toString();
 
