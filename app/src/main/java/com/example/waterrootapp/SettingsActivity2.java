@@ -27,6 +27,7 @@ import static com.example.waterrootapp.MainActivity.time;
 import static com.example.waterrootapp.SplashScreenActivity.firstTime;
 import static com.example.waterrootapp.SplashScreenActivity.sharedPreferences;
 import static com.example.waterrootapp.SplashScreenActivity.switchon;
+import static com.example.waterrootapp.TimerService.userTimer;
 import static com.example.waterrootapp.TimerService.userduration;
 import static com.example.waterrootapp.TimerService.userhour;
 import static com.example.waterrootapp.TimerService.userminute;
@@ -313,9 +314,11 @@ else {
 
 
         EditText durationText =  findViewById(R.id.editText3);
+userduration = 1000*Integer.parseInt(durationText.getText().toString());
+//        String duration = Integer.toString(durationfromedit);
+//        userduration = Integer.parseInt(duration);
 
-        String duration = durationText.getText().toString();
-        userduration = Integer.parseInt(duration);
+        userTimer = userhour + "/" + userminute + "/" +usermonth + "/" +userday + "/" + useryear;
 
 
     }

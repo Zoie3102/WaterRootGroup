@@ -27,7 +27,6 @@ import static com.example.waterrootapp.MainActivity.time;
 
 public class TimerService extends Service {
 String current;
-String userTimer;
 Calendar calendar;
 
 
@@ -42,6 +41,7 @@ Calendar calendar;
 
     public static int useryear = 2019;
     public static int userduration;
+    public static String userTimer;
 
 
 
@@ -50,13 +50,8 @@ Calendar calendar;
 //Intent timeIntent = getIntent();
       // String songUrl = timeIntent.getStringExtra("YOUR_KEY_SONG_NAME");
 
+       Log.d(TAG, "current=" + getTime());
 
-
-       Log.d(TAG, Integer.toString(userhour));
-       Log.d(TAG, Integer.toString(userminute));
-       Log.d(TAG, Integer.toString(userday));
-       Log.d(TAG, Integer.toString(usermonth));
-       Log.d(TAG, Integer.toString(useryear));
 
 
 
@@ -82,8 +77,8 @@ Calendar calendar;
 
 
 
-       userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);// user time will be taken from the settings page
-//        Log.d(TAG, userTimer);
+       userTimer = userhour + "/" + userminute + "/" +usermonth + "/" +userday + "/" + useryear;
+   Log.d(TAG, userTimer);
 //        autoWater();
         super.onCreate();
 
@@ -242,7 +237,7 @@ Calendar calendar;
             int minutes = calendar.get(Calendar.MINUTE);
 
             String stringminute = Integer.toString(minutes);
-            current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
+            current = new String(hour + "/" + stringminute + "/" +month + "/" +stringday + "/" + year);
             return current;
 
 
@@ -308,7 +303,7 @@ Calendar calendar;
                     Log.d(TAG, getTime()); 
 
 
-                    userTimer = new String(userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear);
+                    userTimer =userhour + "/" + userminute + "/" +userday + "/" +usermonth + "/" + useryear;
                     Log.d(TAG, Integer.toString(userminute));
 
 
