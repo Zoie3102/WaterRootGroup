@@ -207,8 +207,8 @@ Calendar calendar;
             String strDate = "Current Time : " + mdformat.format(calendar.getTime());
             log.child(strDate).child("watered").setValue(true);
             log.child(strDate).child("moisture").setValue(0);
-            log.child(strDate).child("duration").setValue("sec");
-            log.child(strDate).child("manual or automatic").setValue("auto");
+            log.child(strDate).child("duration").setValue(userduration/1000);
+            log.child(strDate).child("manual or automatic").setValue("Automatic");
 
 
         }

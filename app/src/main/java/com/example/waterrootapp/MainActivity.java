@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.SplashScreenActivity.switchon;
+import static com.example.waterrootapp.TimerService.userduration;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -205,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
         String time=getCurrentTime(v);
         log.child(time).child("watered").setValue(true);
         log.child(time).child("moisture").setValue(0);
-        log.child(time).child("duration").setValue("sec");
+
+        log.child(time).child("manual or automatic").setValue("Manual");
     }
 
     public void onSetting (View v){
