@@ -100,8 +100,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/moisture"
         android:onClick="onMoisture"
-        android:text="Button"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feature_two" />
