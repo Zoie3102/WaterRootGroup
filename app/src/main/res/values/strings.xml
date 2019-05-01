@@ -218,5 +218,6 @@
     <string name="date_text_hint">month/day/year</string>
     <string name="duration_hint">Number of seconds (nearest whole number)</string>
     <string name="savebuttontext">Save Changes</string>
+    <string name="title_activity_moisture">MoistureActivity</string>
 
 </resources>

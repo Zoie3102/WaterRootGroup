@@ -26,4 +26,11 @@ public class AdditionalFeatures extends AppCompatActivity {
 
 
     }
+
+    public void onMoisture (View v){
+        Intent startNewActivity = new Intent(AdditionalFeatures.this,MoistureActivity.class);
+        startActivity(startNewActivity);
+
+
+    }
 }
