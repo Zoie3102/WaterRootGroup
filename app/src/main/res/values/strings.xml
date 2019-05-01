@@ -219,5 +219,6 @@
     <string name="duration_hint">Number of seconds (nearest whole number)</string>
     <string name="savebuttontext">Save Changes</string>
     <string name="title_activity_moisture">MoistureActivity</string>
+    <string name="moisture_header">Plant Moisture</string>
 
 </resources>
