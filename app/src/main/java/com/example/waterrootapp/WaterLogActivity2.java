@@ -61,7 +61,7 @@ public class WaterLogActivity2 extends AppCompatActivity {
                     DataSnapshot entry = iterator.next();
                     //add the formatted string representing the entry as it's supposed to be
                     if (entry.getChildrenCount()!=4){
-                        waterLogText+="\nBadly Formatted Entry!!!!!";
+                        waterLogText+="\n"+entry.getKey().toString()+": Badly Formatted Entry!!!!!";
                     }
                     else{
                         Iterator<DataSnapshot> entryIta=entry.getChildren().iterator();
