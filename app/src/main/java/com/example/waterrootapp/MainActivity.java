@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
         String time=getCurrentTime(v);
         log.child(time).child("watered").setValue(true);
         log.child(time).child("moisture").setValue(0);
-
+        log.child(time).child("duration").setValue(0);
         log.child(time).child("manual or automatic").setValue("Manual");
     }
 
