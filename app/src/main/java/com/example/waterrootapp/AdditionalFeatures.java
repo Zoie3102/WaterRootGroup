@@ -21,7 +21,7 @@ public class AdditionalFeatures extends AppCompatActivity {
     }
 
     public void onLog (View v){
-        Intent startNewActivity = new Intent(AdditionalFeatures.this,WaterLogActivity.class);
+        Intent startNewActivity = new Intent(AdditionalFeatures.this,WaterLogActivity2.class);
         startActivity(startNewActivity);
 
 
