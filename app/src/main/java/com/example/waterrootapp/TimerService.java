@@ -24,6 +24,7 @@ import java.util.Calendar;
 import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.MainActivity.CHANNEL_ID;
 import static com.example.waterrootapp.MainActivity.time;
+import static com.example.waterrootapp.MainActivity.waterToday;
 
 public class TimerService extends Service {
 String current;
@@ -209,7 +210,7 @@ Calendar calendar;
             log.child(strDate).child("moisture").setValue(0);
             log.child(strDate).child("duration").setValue(userduration/1000);
             log.child(strDate).child("manual or automatic").setValue("Automatic");
-
+waterToday();
 
         }
 

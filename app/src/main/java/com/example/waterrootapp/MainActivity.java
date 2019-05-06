@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
@@ -37,13 +38,25 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     public static String time;
+    public  static  SharedPreferences.Editor wateredTodayEditor;
+
+    public static SharedPreferences wateredTodayPref;
+    public static boolean wateredToday;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
+//wateredToday = wateredTodayPref.getBoolean("waterToday",false);
+        wateredTodayEditor.putBoolean("waterToday", false);
+
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
+
+
 
 
 
@@ -182,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
 //
         commands.child("pumpOn").setValue(1);
+        waterToday();
+         setWaterToday();
 
 
 
@@ -223,6 +238,43 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public  void setWaterToday(){
+        TextView wateredTodayYet = findViewById(R.id.watered_yet);
+        if(wateredTodayPref.getBoolean("waterToday", false) == true){
+            wateredTodayYet.setText("Plant has  been watered in the last 24 hours");
+
+        }
+        else{
+            wateredTodayYet.setText("Plant has not been watered in the last 24 hours");
+        }
+    }
+
+
+    public static void waterToday(){
+
+
+
+
+            wateredTodayEditor.putBoolean("waterToday", true);
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    wateredTodayEditor.putBoolean("waterToday", false);
+                }
+            }, 86400000);
+
+
+
+
+
+
+
+    }
+
+
+
 
 
 
