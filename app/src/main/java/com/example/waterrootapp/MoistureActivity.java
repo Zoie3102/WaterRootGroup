@@ -24,6 +24,7 @@ public class MoistureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_moisture);
         textOutput=findViewById(R.id.textOutput);
         printMoistureLog(textOutput);
+        printMoistureLog(textOutput);
 
     }
 
@@ -43,7 +44,7 @@ public class MoistureActivity extends AppCompatActivity {
                 // Get Post object and use the values to update the UI
 //                waterLogText=dataSnapshot.getValue().toString();
                 Iterator<DataSnapshot> iterator=dataSnapshot.getChildren().iterator();
-                moistureLogText="";
+                moistureLogText="Recent Moisture: "+dataSnapshot.child("recentMoisture").getValue()+"";
 
                 while (iterator.hasNext()) {
                     DataSnapshot entry = iterator.next();

@@ -100,7 +100,7 @@
     <string name="header_content">How to Set Up your WaterRoot</string>
     <string name="additional_features">Additional Features</string>
     <string name="feature_one_content">WaterLog: View watering history including date, time and amount of water given to plant.</string>
-    <string name="feature_two_content">PlantInfo: Take a picture of the plant and instantly get information on the type of the plant as well as its health.</string>
+    <string name="feature_two_content">PlantInfo: These are some websites that we like for looking up plant information.</string>
     <string name="exit_button_content">Exit</string>
     <string name="title_activity_water_log">WaterLogActivity</string>
 
@@ -220,5 +220,6 @@
     <string name="savebuttontext">Save Changes</string>
     <string name="title_activity_moisture">MoistureActivity</string>
     <string name="moisture_header">Plant Moisture</string>
+    <string name="feature_three_instructions">MoistureLog: View the current moisture and the moisture from everytime you watered the plant.</string>
 
 </resources>

@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/feature_one_instructions"
-        android:layout_width="240dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -62,7 +62,7 @@
 
     <TextView
         android:id="@+id/feature_two_instructions"
-        android:layout_width="240dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
@@ -75,6 +75,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/feature_two"
         app:layout_constraintTop_toBottomOf="@+id/feature_one_instructions" />
+
+    <TextView
+        android:id="@+id/feature_three_instructions"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/blue"
+        android:text="@string/feature_three_instructions"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/moisture_page"
+        app:layout_constraintTop_toBottomOf="@+id/feature_two_instructions" />
 
     <Button
         android:id="@+id/return_to_home"
