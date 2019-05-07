@@ -221,7 +221,7 @@
     <string name="title_activity_moisture">MoistureActivity</string>
     <string name="moisture_header">Plant Moisture</string>
     <string name="feature_three_instructions">MoistureLog: View the current moisture and the moisture from everytime you watered the plant.</string>
-    <string name="instructionsText">Instructions:</string>
+    <string name="instructionsText">Instructions: Here are instructions for how to set up the device.</string>
     <string name="title_activity_instructions">Instructions</string>
 
 </resources>
