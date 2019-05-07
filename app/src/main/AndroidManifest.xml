@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MoistureActivity"></activity>
+        <activity android:name=".PlantInfo"></activity>
+        <activity
+            android:name=".Instructions"
+            android:exported="true"
+            android:label="@string/title_activity_instructions"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MoistureActivity" />
         <activity
             android:name=".WaterLogActivity2"
             android:exported="true"
