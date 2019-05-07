@@ -33,4 +33,12 @@ public class AdditionalFeatures extends AppCompatActivity {
 
 
     }
+    public void onInstructions (View v){
+        Intent startNewActivity = new Intent(AdditionalFeatures.this,Instructions.class);
+        startActivity(startNewActivity);
+    }
+    public void onPlantInfo (View v){
+        Intent startNewActivity = new Intent(AdditionalFeatures.this,PlantInfo.class);
+        startActivity(startNewActivity);
+    }
 }
