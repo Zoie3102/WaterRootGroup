@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
 //wateredToday = wateredTodayPref.getBoolean("waterToday",false);
-        wateredTodayEditor.putBoolean("waterToday", false);
+//        wateredTodayEditor.putBoolean("waterToday", false);
 
 
 
@@ -195,8 +195,8 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
 //
         commands.child("pumpOn").setValue(1);
-        waterToday();
-         setWaterToday();
+      //  waterToday();
+        // setWaterToday();
 
 
 

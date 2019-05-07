@@ -210,7 +210,7 @@ Calendar calendar;
             log.child(strDate).child("moisture").setValue(0);
             log.child(strDate).child("duration").setValue(userduration/1000);
             log.child(strDate).child("manual or automatic").setValue("Automatic");
-waterToday();
+//waterToday();
 
         }
 
