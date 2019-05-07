@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Timer;
 
 import static android.provider.Contacts.SettingsColumns.KEY;
@@ -36,26 +37,21 @@ import static com.example.waterrootapp.TimerService.userday;
 import static com.example.waterrootapp.TimerService.useryear;
 
 
-
-
 public class SettingsActivity2 extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
-   public  SharedPreferences myPrefs;
-    public  SharedPreferences.Editor editor2;
+    public SharedPreferences myPrefs;
+    public SharedPreferences.Editor editor2;
     public static final String LAST_TEXT = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings2);
 
 
-
-        sharedPreferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         myPrefs = getSharedPreferences("prefID", Context.MODE_PRIVATE);
-          editor2 = myPrefs.edit();
-
-
-
+        editor2 = myPrefs.edit();
 
 
         Switch timerSwitch = (Switch) findViewById(R.id.switch1);
@@ -69,16 +65,14 @@ public class SettingsActivity2 extends AppCompatActivity {
                 if (isChecked) {
 
 
-
-                    Intent intent = new Intent(SettingsActivity2.this,TimerService.class);
+                    Intent intent = new Intent(SettingsActivity2.this, TimerService.class);
 
 
                     startService(intent);
 
 
-         }
-                else if(isChecked == false){
-                    Intent intent2 = new Intent(SettingsActivity2.this,TimerService.class);
+                } else if (isChecked == false) {
+                    Intent intent2 = new Intent(SettingsActivity2.this, TimerService.class);
 
                     stopService(intent2);
                     // Log.d(TAG, "service off ");
@@ -96,18 +90,15 @@ public class SettingsActivity2 extends AppCompatActivity {
         });
 
 
-
         Switch instructionsSwitch = (Switch) findViewById(R.id.switch2);
-if(instructionsSwitch.isChecked()){
-    switchon = true;
-}
-else {
-    switchon = false;
-}
+        if (instructionsSwitch.isChecked()) {
+            switchon = true;
+        } else {
+            switchon = false;
+        }
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         boolean silent = settings.getBoolean("switchkey", false);
         instructionsSwitch.setChecked(silent);
-
 
 
         instructionsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -121,26 +112,17 @@ else {
                     Log.d(TAG, Boolean.toString(myPrefs.getBoolean("switchon", true)));
 
 
-
 //                    switchon = true;
 //
 //                    //switchon = true;
 //                    Log.d(TAG, Boolean.toString(getSwitchOn(mainView)));
 
 
-
-
-
-
-
-                }
-                else{
+                } else {
 
                     editor2.putBoolean("switchon", false);
                     editor2.apply();
                     Log.d(TAG, Boolean.toString(myPrefs.getBoolean("switchon", true)));
-
-
 
 
                 }
@@ -150,13 +132,11 @@ else {
                 editor.commit();
 
 
-
-
             }
 
 
         });
-        final EditText timeOfWater =  findViewById(R.id.editText);
+        final EditText timeOfWater = findViewById(R.id.editText);
 
 
         SharedPreferences settings4 = getSharedPreferences(PREFS_NAME, 0);
@@ -167,9 +147,6 @@ else {
             @Override
             public void onTextChanged(EditText target, Editable s) {
                 String time = timeOfWater.getText().toString();
-
-
-
 
 
                 Log.d(TAG, time);
@@ -186,13 +163,10 @@ else {
             }
 
 
-
         });
 
 
-
-
-        final EditText dateOfWater =  findViewById(R.id.editText2);
+        final EditText dateOfWater = findViewById(R.id.editText2);
 
 
         SharedPreferences settings5 = getSharedPreferences(PREFS_NAME, 0);
@@ -217,10 +191,9 @@ else {
             }
 
 
-
         });
 
-        final EditText duration =  findViewById(R.id.editText3);
+        final EditText duration = findViewById(R.id.editText3);
 
 
         SharedPreferences settings6 = getSharedPreferences(PREFS_NAME, 0);
@@ -245,13 +218,12 @@ else {
             }
 
 
-
         });
 
     }
 
-    public void onReturn (View v){
-        Intent startNewActivity = new Intent(SettingsActivity2.this,MainActivity.class);
+    public void onReturn(View v) {
+        Intent startNewActivity = new Intent(SettingsActivity2.this, MainActivity.class);
         startActivity(startNewActivity);
 
 
@@ -266,16 +238,17 @@ else {
         }
 
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
 
         @Override
         public void afterTextChanged(Editable s) {
 
             this.onTextChanged(target, s);
-
 
 
         }
@@ -284,49 +257,80 @@ else {
     }
 
 
-    public void onSave (View v){
+    public void onSave(View v) {
+        EditText timeOfWater = findViewById(R.id.editText);
+        EditText dateofWater = findViewById(R.id.editText2);
 
-        Toast.makeText(getApplicationContext(),"Changes Have Been Saved!",Toast.LENGTH_SHORT).show();
-
-        EditText timeOfWater =  findViewById(R.id.editText);
-
-        String time = timeOfWater.getText().toString();
-
-        String[] parts = time.split(":");
-        String part1 = parts[0];
-        userhour = Integer.parseInt(part1);
-        String part2 = parts[1];
-        userminute = Integer.parseInt(part2);
+        if (timeOfWater.getText().toString().contains(":") && checkUserDay()) {
 
 
-        EditText dateofWater =  findViewById(R.id.editText2);
-
-        String date = dateofWater.getText().toString();
-
-        String[] parts2 = date.split("/");
-        String part3 = parts2[0];
-        usermonth = Integer.parseInt(part3);
-        String part4 = parts2[1];
-        userday = Integer.parseInt(part4);
-
-        String part5 = parts2[2];
-        useryear = Integer.parseInt(part5);
 
 
-        EditText durationText =  findViewById(R.id.editText3);
-userduration = 1000*Integer.parseInt(durationText.getText().toString());
+            Toast.makeText(getApplicationContext(), "Changes Have Been Saved!", Toast.LENGTH_SHORT).show();
+
+            //  EditText timeOfWater = findViewById(R.id.editText);
+
+            String time = timeOfWater.getText().toString();
+
+            String[] parts = time.split(":");
+            String part1 = parts[0];
+            userhour = Integer.parseInt(part1);
+            String part2 = parts[1];
+            userminute = Integer.parseInt(part2);
+
+
+            String date = dateofWater.getText().toString();
+
+            String[] parts2 = date.split("/");
+            String part3 = parts2[0];
+            usermonth = Integer.parseInt(part3);
+            String part4 = parts2[1];
+            userday = Integer.parseInt(part4);
+
+            String part5 = parts2[2];
+            useryear = Integer.parseInt(part5);
+
+
+            EditText durationText = findViewById(R.id.editText3);
+            userduration = 1000 * Integer.parseInt(durationText.getText().toString());
 //        String duration = Integer.toString(durationfromedit);
 //        userduration = Integer.parseInt(duration);
 
-        userTimer = userhour + "/" + userminute + "/" +usermonth + "/" +userday + "/" + useryear;
+            userTimer = userhour + "/" + userminute + "/" + usermonth + "/" + userday + "/" + useryear;
+        }
 
+        else{
+            Toast.makeText(getApplicationContext(),"Please Format Settings Correctly",Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 
+    public boolean checkUserDay() {
+        EditText dateofWater = findViewById(R.id.editText2);
 
 
+        String s = dateofWater.getText().toString();
 
+        String news = s.replaceAll("/", "");
 
+        if (news.length() < s.length() - 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
 
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
