@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
-//wateredToday = wateredTodayPref.getBoolean("waterToday",false);
-//        wateredTodayEditor.putBoolean("waterToday", false);
 
         wateredTodayEditor = wateredTodayPref.edit();
 
@@ -259,34 +257,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public  void waterToday(){
+    public  void waterToday() {
 
-        Log.d(TAG, "waterToday: ");
+        if(wateredTodayPref.getBoolean("waterToday", false)==true){
+            Log.d(TAG, "waterToday: ");
 
-         wateredTodayEditor = wateredTodayPref.edit();
+            wateredTodayEditor = wateredTodayPref.edit();
 
             wateredTodayEditor.putBoolean("waterToday", true);
-wateredTodayEditor.commit();
+
+
+            wateredTodayEditor.commit();
             setWaterToday();
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                wateredTodayEditor.putBoolean("waterToday", false);
 
-            }
+        }
 
-        }, 86400000);
-        setWaterToday();
+        else{
+            Log.d(TAG, "waterToday: ");
 
+            wateredTodayEditor = wateredTodayPref.edit();
 
+            wateredTodayEditor.putBoolean("waterToday", true);
 
 
+            wateredTodayEditor.commit();
+            setWaterToday();
 
 
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    wateredTodayEditor.putBoolean("waterToday", false);
+
+                }
+
+            }, 86400000);
+            setWaterToday();
+
+
+        }
 
     }
-
-
 
 
 
