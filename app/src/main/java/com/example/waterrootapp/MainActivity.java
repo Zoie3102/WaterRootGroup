@@ -52,14 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
         wateredTodayEditor = wateredTodayPref.edit();
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
-        TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+        setWaterToday();
 
-
-        wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+      //  wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
 
 
 //        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
@@ -258,44 +256,37 @@ public class MainActivity extends AppCompatActivity {
 
 
     public  void waterToday() {
-
-        if(wateredTodayPref.getBoolean("waterToday", false)==true){
-            Log.d(TAG, "waterToday: ");
-
-            wateredTodayEditor = wateredTodayPref.edit();
-
-            wateredTodayEditor.putBoolean("waterToday", true);
-
-
-            wateredTodayEditor.commit();
-            setWaterToday();
-
-        }
-
-        else{
-            Log.d(TAG, "waterToday: ");
-
-            wateredTodayEditor = wateredTodayPref.edit();
-
-            wateredTodayEditor.putBoolean("waterToday", true);
-
-
-            wateredTodayEditor.commit();
-            setWaterToday();
+        if(wateredTodayPref.getBoolean("waterToday", false)==false){
 
 
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
                     wateredTodayEditor.putBoolean("waterToday", false);
+                    wateredTodayEditor.commit();
 
                 }
 
-            }, 86400000);
+            }, 1000);
+            //86400000
             setWaterToday();
 
 
         }
+        //if(wateredTodayPref.getBoolean("waterToday", false)==true){
+        //    Log.d(TAG, "waterToday: ");
+
+            wateredTodayEditor = wateredTodayPref.edit();
+
+            wateredTodayEditor.putBoolean("waterToday", true);
+
+
+            wateredTodayEditor.commit();
+            setWaterToday();
+
+     //   }
+
+
 
     }
 
