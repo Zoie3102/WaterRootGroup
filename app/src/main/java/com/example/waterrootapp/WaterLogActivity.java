@@ -34,8 +34,6 @@ public class WaterLogActivity extends AppCompatActivity {
     public void onBack (View v){
         Intent startNewActivity = new Intent(WaterLogActivity.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
-
-
     }
     public void printWaterLog(TextView output){
         FirebaseDatabase database = FirebaseDatabase.getInstance();

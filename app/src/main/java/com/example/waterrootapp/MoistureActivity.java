@@ -33,6 +33,8 @@ public class MoistureActivity extends AppCompatActivity {
         startActivity(startNewActivity);
     }
     public void onRefresh(View v){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        database.getReference().child("commands").child("moistureOn").setValue(1);
         printMoistureLog(textOutput);
     }
     public static void printMoistureLog(TextView output){
