@@ -67,6 +67,8 @@ Calendar calendar;
 
        thread p = new thread();
        new Thread(p).start();
+       thread2 q = new thread2();
+       new Thread(q).start();
 
 //         calendar = Calendar.getInstance();
 //        String year = Integer.toString(calendar.get(Calendar.YEAR));
@@ -247,6 +249,26 @@ Calendar calendar;
 
 
         }
+    public String getTime2(){
+        calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
+
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String stringday = Integer.toString(day);
+
+
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        int minutes = calendar.get(Calendar.MINUTE);
+
+        String stringminute = Integer.toString(minutes);
+        if (stringminute.length()==1)
+            stringminute="0"+stringminute;
+        current = new String(month + "\\" +stringday + "\\" + year+" at "+hour + ":" + stringminute);
+        return current;
+
+
+    }
 
 
     class thread extends Thread{
@@ -343,28 +365,14 @@ Calendar calendar;
         @Override
         public void run() {
 
-            getTime();
 
-//            calendar = Calendar.getInstance();
-//            String year = Integer.toString(calendar.get(Calendar.YEAR));
-//            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
-//
-//            int day = calendar.get(Calendar.DAY_OF_MONTH);
-//            String stringday = Integer.toString(day);
-//
-//
-//            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-//            int minutes = calendar.get(Calendar.MINUTE);
-//
-//            String stringminute = Integer.toString(minutes);
-//            current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
 
             Log.d(TAG, current);
 
             while(true){
-                Log.d(TAG, getTime());
+                Log.d(TAG, getTime2());
 
-                addMoistureLogListener(getTime());
+                addMoistureLogListener(getTime2());
                 try {
                     thread2.sleep(1000);
                 } catch (InterruptedException e) {
@@ -389,7 +397,8 @@ Calendar calendar;
                 DatabaseReference moistureRef=dataSnapshot.getChildren().iterator().next().getRef();
                 long moistureVal=(long)dataSnapshot.getChildren().iterator().next().getValue();
 
-                moistureLog.child(timeString).setValue(moistureVal);
+                moistureLog.getParent().child(timeString).child("moisture").setValue(moistureVal);
+                Log.d("inServece","I just added a child HAHAHAHAHAHAHAHAHA");
 //                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
 
 
