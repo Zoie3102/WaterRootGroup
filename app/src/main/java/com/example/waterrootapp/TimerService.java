@@ -24,7 +24,6 @@ import java.util.Calendar;
 import static android.support.constraint.Constraints.TAG;
 import static com.example.waterrootapp.MainActivity.CHANNEL_ID;
 import static com.example.waterrootapp.MainActivity.time;
-import static com.example.waterrootapp.MainActivity.waterToday;
 
 public class TimerService extends Service {
 String current;
@@ -247,38 +246,13 @@ Calendar calendar;
 
     class thread extends Thread{
 
-        //int seconds;
 
-//        thread(){
-//
-//            calendar = Calendar.getInstance();
-//            String year = Integer.toString(calendar.get(Calendar.YEAR));
-//            String month = Integer.toString(calendar.get(Calendar.MONTH));
-//
-//            String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
-//            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-//            String minute = Integer.toString(calendar.get(Calendar.MINUTE));
-//
-//            current = new String(hour + "/" + minute + "/" +day + "/" +month + "/" + year);
-//        }
         @Override
         public void run() {
 
             getTime();
 
-//            calendar = Calendar.getInstance();
-//            String year = Integer.toString(calendar.get(Calendar.YEAR));
-//            String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
 //
-//            int day = calendar.get(Calendar.DAY_OF_MONTH);
-//            String stringday = Integer.toString(day);
-//
-//
-//            String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
-//            int minutes = calendar.get(Calendar.MINUTE);
-//
-//            String stringminute = Integer.toString(minutes);
-//            current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
 
             Log.d(TAG, current);
 
@@ -297,10 +271,7 @@ Calendar calendar;
 
                     userday++;
 
-                  //  day= day + 1;
-                 //    stringday = Integer.toString(day);
-                    //userday++;
-                   // current = new String(hour + "/" + stringminute + "/" +stringday + "/" +month + "/" + year);
+
                     Log.d(TAG, getTime()); 
 
 
