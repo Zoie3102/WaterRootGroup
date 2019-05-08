@@ -41,23 +41,25 @@ public class MainActivity extends AppCompatActivity {
     public  static  SharedPreferences.Editor wateredTodayEditor;
 
     public static SharedPreferences wateredTodayPref;
+    public static SharedPreferences wateredTodayPref2;
+
     public static boolean wateredToday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
-//wateredToday = wateredTodayPref.getBoolean("waterToday",false);
-//        wateredTodayEditor.putBoolean("waterToday", false);
 
+        wateredTodayEditor = wateredTodayPref.edit();
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createNotificationChannel();
+        TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
 
 
-
+        wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
 
 
 //        Switch timerSwitch = (Switch) findViewById(R.id.timer_switch);
@@ -195,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
 //
         commands.child("pumpOn").setValue(1);
+
+        waterToday();
       //  waterToday();
         // setWaterToday();
 
@@ -240,40 +244,60 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public  void setWaterToday(){
-        TextView wateredTodayYet = findViewById(R.id.watered_yet);
-        if(wateredTodayPref.getBoolean("waterToday", false) == true){
-            wateredTodayYet.setText("Plant has  been watered in the last 24 hours");
+
+        Log.d(TAG, "setWaterToday: ");
+        TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+        if(wateredTodayPref.getBoolean("waterToday", false)==true){
+            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
 
         }
         else{
-            wateredTodayYet.setText("Plant has not been watered in the last 24 hours");
+            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
         }
     }
 
 
-    public static void waterToday(){
+    public  void waterToday() {
 
+        if(wateredTodayPref.getBoolean("waterToday", false)==true){
+            Log.d(TAG, "waterToday: ");
 
-
+            wateredTodayEditor = wateredTodayPref.edit();
 
             wateredTodayEditor.putBoolean("waterToday", true);
+
+
+            wateredTodayEditor.commit();
+            setWaterToday();
+
+        }
+
+        else{
+            Log.d(TAG, "waterToday: ");
+
+            wateredTodayEditor = wateredTodayPref.edit();
+
+            wateredTodayEditor.putBoolean("waterToday", true);
+
+
+            wateredTodayEditor.commit();
+            setWaterToday();
+
 
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
                     wateredTodayEditor.putBoolean("waterToday", false);
+
                 }
+
             }, 86400000);
+            setWaterToday();
 
 
-
-
-
-
+        }
 
     }
-
-
 
 
 
