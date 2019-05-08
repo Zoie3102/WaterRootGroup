@@ -25,7 +25,7 @@ public class MoistureActivity extends AppCompatActivity {
         textOutput=findViewById(R.id.textOutput);
         printMoistureLog(textOutput);
         printMoistureLog(textOutput);
-        TimerService.addMoistureLogListener("asdfaHabadahabada");
+    //    TimerService.addMoistureLogListener("asdfaHabadahabada");
 
     }
 
