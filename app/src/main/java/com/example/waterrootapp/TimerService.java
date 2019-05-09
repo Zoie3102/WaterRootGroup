@@ -398,7 +398,6 @@ waterToday();
             Log.d(TAG, current);
 //            while(true){
 //                Log.d(TAG, getTime2());
-////                addMoistureLogListener();
 //                try {
 //                    thread2.sleep(1000);
 //                } catch (InterruptedException e) {
@@ -455,7 +454,9 @@ waterToday();
                     Log.d("oops","I don't think that's the right object type.");
                     moistureRec.getParent().child(getTime2()).child("moisture").setValue("Yah dun goofed, moisture is a long??!");
 
-
+                }
+                catch(java.lang.NullPointerException e){
+                    Log.wtf("inService","moisture database structure missing!!!");
                 }
 //                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
 

@@ -47,7 +47,8 @@ public class MoistureActivity extends AppCompatActivity {
                 // Get Post object and use the values to update the UI
 //                waterLogText=dataSnapshot.getValue().toString();
                 Iterator<DataSnapshot> iterator=dataSnapshot.getChildren().iterator();
-                moistureLogText="Recent Moisture: "+dataSnapshot.child("recentMoisture").getValue()+"";
+                moistureLogText="You may need to click Refresh multiple times for current readings.\n\n";
+                moistureLogText+="Recent Moisture: "+dataSnapshot.child("recentMoisture").getValue()+"";
 
                 while (iterator.hasNext()) {
                     DataSnapshot entry = iterator.next();
@@ -66,9 +67,8 @@ public class MoistureActivity extends AppCompatActivity {
 
                     }
                 }
-
-
-                // ...
+                moistureLogText+="\nRecent Moisture: "+dataSnapshot.child("recentMoisture").getValue()+"";
+                textOutput.setText(moistureLogText);
             }
 
             @Override
@@ -79,6 +79,5 @@ public class MoistureActivity extends AppCompatActivity {
             }
         };
         moistureLog.addValueEventListener(postListener);
-        textOutput.setText(moistureLogText);
     }
 }
