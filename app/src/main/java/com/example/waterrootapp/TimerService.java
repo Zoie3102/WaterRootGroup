@@ -321,80 +321,53 @@ waterToday();
 
 
 
-//    public  void setWaterToday(){
-//        View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main,null);
-//
-//        TextView wateredTodayYet = (TextView) myLayout.findViewById(R.id.watered_yet);
-//        if(wateredTodayPref.getBoolean("waterToday", false)==true){
-//            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
-//            Log.d(TAG, "okkokokok");
-//
-//
-//        }
-//        else{
-//            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
-//        }
-//    }
+    public  void setWaterToday(){
+        View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main,null);
+
+        TextView wateredTodayYet = (TextView) myLayout.findViewById(R.id.watered_yet);
+        if(wateredTodayPref.getBoolean("waterToday", false)==true){
+            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
+            Log.d(TAG, "okkokokok");
 
 
-    public  void waterToday() {
-
-            Log.d(TAG, "waterToday: ");
-
-            wateredTodayEditor = wateredTodayPref.edit();
-
-            wateredTodayEditor.putBoolean("waterToday", true);
+        }
+        else{
+            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+        }
+    }
 
 
-            wateredTodayEditor.commit();
+    public void waterToday(){
+
+        wateredTodayEditor = wateredTodayPref.edit();
+
+        wateredTodayEditor.putBoolean("waterToday", true);
+        wateredTodayEditor.commit();
+       // setWaterToday();
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                wateredTodayEditor.putBoolean("waterToday", false);
-                wateredTodayEditor.commit();
+
+
+               // runOnUiThread(new Runnable() {
+               //     @Override
+               //     public void run() {
+                        wateredTodayEditor.putBoolean("waterToday", false);
+                        wateredTodayEditor.commit();
+                        Log.d(TAG, "run: fhefshfoes");
+                        //setWaterToday();
+                //    }
+             //   });
+
+
 
             }
 
-        }, 1000);
+        }, 10000);
 
-//86400000
-//        if(wateredTodayPref.getBoolean("waterToday", false)==true){
-//            Log.d(TAG, "waterToday: ");
-//
-//            wateredTodayEditor = wateredTodayPref.edit();
-//
-//            wateredTodayEditor.putBoolean("waterToday", true);
-//
-//
-//            wateredTodayEditor.commit();
-//            setWaterToday();
-//
-//        }
-//
-//        else{
-//            Log.d(TAG, "waterToday: ");
-//
-//            wateredTodayEditor = wateredTodayPref.edit();
-//
-//            wateredTodayEditor.putBoolean("waterToday", true);
-//
-//
-//            wateredTodayEditor.commit();
-//            setWaterToday();
-//
-//
-//            new Timer().schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    wateredTodayEditor.putBoolean("waterToday", false);
-//
-//                }
-//
-//            }, 86400000);
-//            setWaterToday();
-//
-//
-//        }
+        Log.d(TAG, "dsfad ");
+
+
 
     }
 

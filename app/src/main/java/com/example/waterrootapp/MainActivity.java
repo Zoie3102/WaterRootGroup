@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         createNotificationChannel();
 
-        wateredTodayEditor.putBoolean("waterToday", false);
-        wateredTodayEditor.commit();
+//        wateredTodayEditor.putBoolean("waterToday", false);
+//        wateredTodayEditor.commit();
         setWaterToday();
-        TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+       // TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
 
-        wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+       // wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
 
 
         //  wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
@@ -302,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void waterToday(){
-        TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
 
         wateredTodayEditor = wateredTodayPref.edit();
 
@@ -328,7 +327,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        }, 1000);
+        }, 5000);
 
         Log.d(TAG, "dsfad ");
 
