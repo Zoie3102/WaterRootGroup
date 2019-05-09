@@ -18,8 +18,11 @@ import android.widget.Toast;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.nio.channels.Channel;
 import java.text.SimpleDateFormat;
@@ -36,6 +39,7 @@ import static com.example.waterrootapp.MainActivity.wateredTodayPref;
 public class TimerService extends Service {
 String current;
 Calendar calendar;
+static Calendar calendar2;
 
 
 
@@ -71,6 +75,8 @@ Calendar calendar;
 
        thread p = new thread();
        new Thread(p).start();
+
+       addRecentMoistureListener();
 
 //         calendar = Calendar.getInstance();
 //        String year = Integer.toString(calendar.get(Calendar.YEAR));
@@ -254,6 +260,7 @@ waterToday();
         }
 
 
+
     class thread extends Thread{
 
 
@@ -369,6 +376,101 @@ waterToday();
 
 
 
+    }
+    public static String getTime2(){
+        Calendar calendar3 = Calendar.getInstance();
+        String year = Integer.toString(calendar3.get(Calendar.YEAR));
+        String month = Integer.toString(calendar3.get(Calendar.MONTH) + 1);
+        int day = calendar3.get(Calendar.DAY_OF_MONTH);
+        String stringday = Integer.toString(day);
+        String hour = Integer.toString(calendar3.get(Calendar.HOUR_OF_DAY));
+        int minutes = calendar3.get(Calendar.MINUTE);
+        String stringminute = Integer.toString(minutes);
+        if (stringminute.length()==1)
+            stringminute="0"+stringminute;
+        return month + "\\" +stringday + "\\" + year+" at "+hour + ":" + stringminute;
+    }
+    class thread2 extends Thread{
+        @Override
+        public void run() {
+            getTime();
+            addRecentMoistureListener();
+            Log.d(TAG, current);
+//            while(true){
+//                Log.d(TAG, getTime2());
+////                addMoistureLogListener();
+//                try {
+//                    thread2.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+        }
+    }
+    //This is a logically flawed method, because it accesses the wrong moisture, so the right implementation is the next method.
+    public static void addMoistureLogListener(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference moistureLogRec = database.getReference("moistureLog").child("recentLog");
+//        final String timeString="Time: "+currentTime;
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+//                waterLogText=dataSnapshot.getValue().toString();
+                DatabaseReference moistureRef=dataSnapshot.getChildren().iterator().next().getRef();
+                long moistureVal=(long)dataSnapshot.getChildren().iterator().next().getValue();
+                moistureLogRec.getParent().child(getTime2()).child("moisture").setValue(moistureVal);
+                Log.d("inServece","I just added a child HOHOHOHOEEHEHEHE");
+//                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
+
+
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("firebase", "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        moistureLogRec.addValueEventListener(postListener);
+    }
+    //This is the method that actually listens for moisture updates correctly
+    public static void addRecentMoistureListener(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference moistureRec = database.getReference("moistureLog").child("recentMoisture");
+//        final String timeString="Time: "+currentTime;
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+//                waterLogText=dataSnapshot.getValue().toString();
+                try {
+                    long moistureVal = (long) dataSnapshot.getValue();
+                    moistureRec.getParent().child(getTime2()).child("moisture").setValue(moistureVal);
+                    Log.d("inServece","I just added a child HipatihipHAHA");
+                }
+                catch (java.lang.ClassCastException e){
+                    Log.d("oops","I don't think that's the right object type.");
+                    moistureRec.getParent().child(getTime2()).child("moisture").setValue("Yah dun goofed, moisture is a long??!");
+
+
+                }
+//                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
+
+
+                // ...
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("firebase", "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
+        };
+        moistureRec.addValueEventListener(postListener);
     }
 
 
