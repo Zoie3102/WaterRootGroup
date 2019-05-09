@@ -8,6 +8,7 @@
     <color name="white">#ffffff</color>
     <color name="colorGradientStart">#D9FF43</color>
     <color name="colorGradientEnd">#F67831</color>
+    <color name="lightgreen">#5aaa95</color>
 
 
 </resources>
