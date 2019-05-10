@@ -28,7 +28,7 @@ public class WaterLogActivity2 extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         textOutput=findViewById(R.id.textOutput);
-        printWaterLog(textOutput);
+        printWaterLog();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -42,12 +42,12 @@ public class WaterLogActivity2 extends AppCompatActivity {
         startActivity(startNewActivity);
     }
     public void onRefresh(View v){
-        printWaterLog(textOutput);
+        printWaterLog();
     }
-    public void printWaterLog(TextView output){
+    public void printWaterLog(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference waterLog = database.getReference("waterLog");
-        output.setText(waterLog.toString());
+//        output.setText(waterLog.toString());
 
         ValueEventListener postListener = new ValueEventListener() {
             @Override
@@ -81,6 +81,7 @@ public class WaterLogActivity2 extends AppCompatActivity {
 
                     }
                 }
+                textOutput.setText(waterLogText);
 
 
                 // ...
@@ -95,7 +96,7 @@ public class WaterLogActivity2 extends AppCompatActivity {
         };
         waterLog.addValueEventListener(postListener);
 //        Query test=waterLog;
-        output.setText(waterLogText);
+
 
     }
 }
