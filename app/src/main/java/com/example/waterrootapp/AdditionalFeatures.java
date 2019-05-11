@@ -11,6 +11,11 @@ import android.view.View;
 
 public class AdditionalFeatures extends AppCompatActivity {
 
+    /**
+     * Creates an instance of the AdditionalFeatures activity
+     * @param savedInstanceState is the activities previously saved state
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
