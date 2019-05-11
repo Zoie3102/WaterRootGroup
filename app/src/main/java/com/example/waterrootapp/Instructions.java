@@ -8,8 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+/**
+ * An activity that contains instructions for setting up and using the device
+ */
 public class Instructions extends AppCompatActivity {
-
+    /**
+     * Creates the Instructions activity
+     * @param savedInstanceState is the previously saved state of the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +32,11 @@ public class Instructions extends AppCompatActivity {
 //            }
 //        });
     }
+
+    /**
+     * Takes the user to the AdditionalFeatures page from the Instructions page
+     * @param v is the View object
+     */
     public void onBack (View v){
         Intent startNewActivity = new Intent(Instructions.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
