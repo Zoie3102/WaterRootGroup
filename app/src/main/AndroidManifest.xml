@@ -22,10 +22,6 @@
             android:label="@string/title_activity_water_log2"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SettingsActivity2" />
-        <activity
-            android:name=".WaterLogActivity"
-            android:label="@string/title_activity_water_log"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AdditionalFeatures" />
 
         <activity android:name=".SplashScreenActivity">
