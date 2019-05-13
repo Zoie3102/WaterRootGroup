@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * When the waternow button is pressed, this method is called and a boolean is set to true. The setWaterToday() method is subsequently called. Next, a timer is set so that the boolean will be set to false in 24 hours.
+     * When the WaterNow button is pressed, this method is called and a boolean is set to true. The setWaterToday() method is subsequently called. Next, a timer is set so that the boolean will be set to false in 24 hours.
      */
 
     public void waterToday(){
