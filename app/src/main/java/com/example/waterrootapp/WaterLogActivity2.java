@@ -1,3 +1,7 @@
+/**@author: Daniel Abadjiev
+ * @date: 5/15/19
+ * @description: This is the second
+ */
 package com.example.waterrootapp;
 
 import android.content.Intent;

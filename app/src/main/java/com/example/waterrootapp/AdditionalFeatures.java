@@ -34,7 +34,7 @@ public class AdditionalFeatures extends AppCompatActivity {
     }
 
     /**
-     * Takes the user to the WaterLogActivity page from the AdditionalFeatures page
+     * Takes the user to the WaterLogActivity2 page from the AdditionalFeatures page
      * @param v is the View object
      */
     public void onLog (View v){
