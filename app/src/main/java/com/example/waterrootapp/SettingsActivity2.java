@@ -46,8 +46,8 @@ public class SettingsActivity2 extends AppCompatActivity {
     public static final String LAST_TEXT = "";
 
     /**
-     *
-     * @param savedInstanceState
+     * Creates an instance of the SettingsActivity
+     * @param savedInstanceState is the activities previously saved state
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,6 +162,10 @@ public class SettingsActivity2 extends AppCompatActivity {
         });
     }
 
+    /**
+     * Takes the user to the MainActivity page from the SettingsActivity2 page
+     * @param v is the View object
+     */
     public void onReturn(View v) {
         Intent startNewActivity = new Intent(SettingsActivity2.this, MainActivity.class);
         startActivity(startNewActivity);
@@ -217,6 +221,10 @@ public class SettingsActivity2 extends AppCompatActivity {
 
     }
 
+    /**
+     * Checks if the string the user types into the edit text contains two slashes
+     * @return true if the '/' character is present twice in the string. This is a requirment for the date edit text
+     */
     public boolean checkUserDay() {
         EditText dateofWater = findViewById(R.id.editText2);
         String s = dateofWater.getText().toString();
