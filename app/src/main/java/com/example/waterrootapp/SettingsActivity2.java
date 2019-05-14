@@ -222,7 +222,7 @@ public class SettingsActivity2 extends AppCompatActivity {
     }
 
     /**
-     * Checks if the string the user types into the edit text contains two slashes
+     * Checks if the string the user types into the edit text contains two slashess
      * @return true if the '/' character is present twice in the string. This is a requirment for the date edit text
      */
     public boolean checkUserDay() {

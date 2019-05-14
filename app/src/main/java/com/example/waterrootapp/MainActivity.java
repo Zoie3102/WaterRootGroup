@@ -101,15 +101,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Return the current time in hour:minute:second format. A 24 hour clock is used.
+     * Return the current time and date. A 24 hour clock is used.
      * @param view is the view object passed to the method
-     * @return the current time of day in military time
+     * @return the current date and time in military time
      */
     public String getCurrentTime(View view) {
+
+
+
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
-        String strDate = "Current Time : " + mdformat.format(calendar.getTime());
-        return strDate;
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+        String current = "Time: " + hour + ":" + minute + ","+ " Day: " +day+ "," + " Month: " +month+ "," + " Year: " + year;
+        return current;
     }
 
     /**
@@ -150,7 +157,9 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
         commands.child("pumpOn").setValue(0);
         DatabaseReference log = database.getReference("waterLog");
-        String time=getCurrentTime(v);
+        String time = getCurrentTime(v);
+
+
         log.child(time).child("watered").setValue(true);
         log.child(time).child("moisture").setValue(0);
         log.child(time).child("duration").setValue(0);
@@ -209,6 +218,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-        }, 5000);
+        }, 86400000);
     }
+
+
 }

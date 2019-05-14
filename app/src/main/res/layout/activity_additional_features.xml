@@ -134,6 +134,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
+        android:textSize="20sp"
+
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -142,7 +144,6 @@
         android:background="@color/blue"
         android:text="@string/feature_three_instructions"
         android:textColor="@color/white"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/feature_four_instructions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/moisture_page"
