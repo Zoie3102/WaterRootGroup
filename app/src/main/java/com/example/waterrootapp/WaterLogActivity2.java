@@ -80,7 +80,12 @@ public class WaterLogActivity2 extends AppCompatActivity {
                         String manAutoVal=entryIta.next().getValue().toString();
                         long moistureVal= ((long) entryIta.next().getValue());
                         boolean waterVal=((boolean) entryIta.next().getValue());
-                        waterLogText+="\n"+entry.getKey().toString().substring(8)+"\n\t \t Duration: "+durationVal+
+                        String timeTag=entry.getKey().toString();
+                        if (timeTag.indexOf("Current ")>-1){
+                            timeTag=timeTag.substring(8);
+                        }
+                        waterLogText+="\n"+timeTag;
+                        waterLogText+="\n\t \t Duration: "+durationVal+
                                 "\n\t \t Manual or Automatic: "+manAutoVal+"\n\t \t Moisture: "+
                                 moistureVal+"\n\t \t Watered?: "+waterVal;
                     }
