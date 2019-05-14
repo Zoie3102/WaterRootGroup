@@ -38,6 +38,9 @@ import static com.example.waterrootapp.TimerService.usermonth;
 import static com.example.waterrootapp.TimerService.userday;
 import static com.example.waterrootapp.TimerService.useryear;
 
+/**
+ * An activity that stores user information such as the date and time they would like the plant to be watered and transfers the information to other activities.
+ */
 
 public class SettingsActivity2 extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
@@ -103,7 +106,7 @@ public class SettingsActivity2 extends AppCompatActivity {
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putBoolean("switchkey", isChecked);
-                editor.commit();
+                editor.apply();
             }
 
 
@@ -123,7 +126,7 @@ public class SettingsActivity2 extends AppCompatActivity {
                 SharedPreferences settings4 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor4 = settings4.edit();
                 editor4.putString("timeofwaterkey", time);
-                editor4.commit();
+                editor4.apply();
             }
         });
         final EditText dateOfWater = findViewById(R.id.editText2);
@@ -140,7 +143,7 @@ public class SettingsActivity2 extends AppCompatActivity {
                 SharedPreferences settings5 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor5 = settings5.edit();
                 editor5.putString("dateofwaterkey", date);
-                editor5.commit();
+                editor5.apply();
             }
         });
         final EditText duration = findViewById(R.id.editText3);
@@ -157,7 +160,7 @@ public class SettingsActivity2 extends AppCompatActivity {
                 SharedPreferences settings6 = getSharedPreferences(PREFS_NAME, 0);
                 SharedPreferences.Editor editor6 = settings6.edit();
                 editor6.putString("durationkey", durationstring);
-                editor6.commit();
+                editor6.apply();
             }
         });
     }
@@ -190,6 +193,10 @@ public class SettingsActivity2 extends AppCompatActivity {
         public abstract void onTextChanged(T target, Editable s);
     }
 
+    /**
+     * Saves changes to the settings. This method splits the date and time into there hour, minute, day, month, and year components and then automatically updates the values to the timer service so the user does not have to turn the timer on and off again. Additionally, if the data is not formatted correctly a message appears telling the user to reformat their information.
+     * @param v is the view object
+     */
     public void onSave(View v) {
         EditText timeOfWater = findViewById(R.id.editText);
         EditText dateofWater = findViewById(R.id.editText2);
