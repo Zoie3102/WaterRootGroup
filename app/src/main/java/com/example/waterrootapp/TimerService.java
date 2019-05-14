@@ -67,7 +67,11 @@ public class TimerService extends Service {
         super.onCreate();
     }
 
-
+    /**
+     * This method does what?????????????????
+     * @param intent is the
+     * @return
+     */
     protected String getUserDate(@Nullable Intent intent) {
         String userDate = intent.getStringExtra("userDate");
         Log.d(TAG, userDate);
@@ -130,6 +134,7 @@ public class TimerService extends Service {
 
     /**
      * Gets the current time and returns it formatted in a single string
+     * Used for algorithmic purposes, this format is not shown to the user.
      * @return the formatted string that has the current hour, minute, day, month, and year
      */
     public String getTime() {
@@ -231,18 +236,6 @@ public class TimerService extends Service {
         if (stringminute.length() == 1)
             stringminute = "0" + stringminute;
         return month + "\\" + stringday + "\\" + year + " at " + hour + ":" + stringminute;
-    }
-
-    /**
-     * This class is a thread to add a moisture listener in the scope of the background service.
-     */
-    class thread2 extends Thread {
-        @Override
-        public void run() {
-            getTime();
-            addRecentMoistureListener();
-            Log.d(TAG, current);
-        }
     }
 
     /**
