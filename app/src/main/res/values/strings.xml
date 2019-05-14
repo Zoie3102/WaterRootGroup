@@ -129,7 +129,7 @@
         "Example Text.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExample Text."
     </string>
     <string name="time_edit_hint">hr:min (exclude leading zeroes)</string>
-    <string name="date_text_hint">month/day/year</string>
+    <string name="date_text_hint">month/day/year (use 2019 not 19)</string>
     <string name="duration_hint">Number of seconds (nearest whole number)</string>
     <string name="savebuttontext">Save Changes</string>
     <string name="title_activity_moisture">MoistureActivity</string>

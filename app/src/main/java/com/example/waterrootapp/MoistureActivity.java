@@ -14,10 +14,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
-
+/**@author: Daniel Abadjiev
+ * @date: 5/15/19
+ * @description: This is an activity that display the information fom the MoistureLog in firebase. This information includes the date and time of water, the duration, and the reading for the moisture sensor.
+ */
 public class MoistureActivity extends AppCompatActivity {
     public static String moistureLogText;
     public static TextView textOutput;
+
+    /**
+     * Creates an instance of the MoistureActivity
+     * @param savedInstanceState is the activities previously saved state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -29,16 +37,29 @@ public class MoistureActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Takes the user to the AdditionalFeatures page from the MoistureActivity page
+     * @param v is the View object
+     */
     public void onBack (View v){
         Intent startNewActivity = new Intent(MoistureActivity.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
     }
+
+    /**
+     * Displays updated moisture readings from firebase
+     * @param v is the View object
+     */
     public void onRefresh(View v){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         database.getReference().child("commands").child("moistureOn").setValue(1);
         printMoistureLog(textOutput);
     }
+
+    /**
+     * Displays Moisture Log entries from firebase
+     * @param output is the TextView that will display the information
+     */
     public static void printMoistureLog(TextView output){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference moistureLog = database.getReference("moistureLog");

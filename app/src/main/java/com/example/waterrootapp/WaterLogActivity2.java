@@ -1,6 +1,6 @@
 /**@author: Daniel Abadjiev
  * @date: 5/15/19
- * @description: This is the second version of the activity to
+ * @description: This is the second version of the activity to display the information fom the WaterLog in firebase. This information includes the date and time of water, the duration, and whether the plant was watered automatically or manually.
  */
 package com.example.waterrootapp;
 
@@ -33,21 +33,28 @@ public class WaterLogActivity2 extends AppCompatActivity {
         setSupportActionBar(toolbar);
         textOutput=findViewById(R.id.textOutput);
         printWaterLog();
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                onBack(view);
-//            }
-//        });
     }
+
+    /**
+     * Takes the user to the AdditionalFeatures page from the WaterLogActivity2 page
+     * @param v is the View object
+     */
     public void onBack (View v){
         Intent startNewActivity = new Intent(WaterLogActivity2.this,AdditionalFeatures.class);
         startActivity(startNewActivity);
     }
+
+    /**
+     * Displays updated WaterLog entries from firebase
+     * @param v is the View object
+     */
     public void onRefresh(View v){
         printWaterLog();
     }
+
+    /**
+     * Displays Water Log entries from firebase in a text view
+     */
     public void printWaterLog(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference waterLog = database.getReference("waterLog");
@@ -73,24 +80,13 @@ public class WaterLogActivity2 extends AppCompatActivity {
                         String manAutoVal=entryIta.next().getValue().toString();
                         long moistureVal= ((long) entryIta.next().getValue());
                         boolean waterVal=((boolean) entryIta.next().getValue());
-//                        durationVal="mgh";
-//                        manAutoVal="mgh";
-//                        moistureVal=0;
-//                        waterVal=false; Testing purposes
-
                         waterLogText+="\n"+entry.getKey().toString().substring(8)+"\n\t \t Duration: "+durationVal+
                                 "\n\t \t Manual or Automatic: "+manAutoVal+"\n\t \t Moisture: "+
                                 moistureVal+"\n\t \t Watered?: "+waterVal;
-
-
                     }
                 }
                 textOutput.setText(waterLogText);
-
-
-                // ...
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message
@@ -99,8 +95,5 @@ public class WaterLogActivity2 extends AppCompatActivity {
             }
         };
         waterLog.addValueEventListener(postListener);
-//        Query test=waterLog;
-
-
     }
 }
