@@ -225,11 +225,11 @@ waterToday();
             DatabaseReference log = database2.getReference("waterLog");
 
             SimpleDateFormat mdformat = new SimpleDateFormat("HH:mm:ss");
-            String strDate = "Current Time : " + mdformat.format(calendar.getTime());
-            log.child(strDate).child("watered").setValue(true);
-            log.child(strDate).child("moisture").setValue(0);
-            log.child(strDate).child("duration").setValue(userduration/1000);
-            log.child(strDate).child("manual or automatic").setValue("Automatic");
+            String time = getCurrentTime();
+            log.child(time).child("watered").setValue(true);
+            log.child(time).child("moisture").setValue(0);
+            log.child(time).child("duration").setValue(userduration/1000);
+            log.child(time).child("manual or automatic").setValue("Automatic");
 
 
         }
@@ -480,6 +480,23 @@ waterToday();
     }
 
 
+    /**
+     * Return the current time and date. A 24 hour clock is used.
+     * @return the current date and time in military time
+     */
+    public String getCurrentTime() {
+
+
+
+        Calendar calendar = Calendar.getInstance();
+        String year = Integer.toString(calendar.get(Calendar.YEAR));
+        String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+        String current = "Time: " + hour + ":" + minute + ","+ " Day: " +day+ "," + " Month: " +month+ "," + " Year: " + year;
+        return current;
+    }
 
 
 
