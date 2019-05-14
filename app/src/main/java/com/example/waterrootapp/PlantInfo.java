@@ -46,7 +46,10 @@ public class PlantInfo extends AppCompatActivity {
     }
     //copied from https://developer.android.com/guide/components/intents-common#Browser then updated
 
-
+    /**
+     * Opens a browser and automatically opens the correct website
+     * @param url is the url of the website that will be opened
+     */
     public void openWebPage(String url) {
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
