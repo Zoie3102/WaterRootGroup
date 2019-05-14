@@ -137,5 +137,13 @@
     <string name="feature_three_instructions">Moisture Log: View the current moisture and the moisture from everytime you watered the plant.</string>
     <string name="instructionsText">Instructions: Here are instructions for how to set up the device.</string>
     <string name="title_activity_instructions">Instructions</string>
+    <string name="instructions">Instructions</string>
+    <string name="video_instructions">video instructions</string>
+    <string name="instructions_document">Instructions Document</string>
+    <string name="refresh">Refresh</string>
+    <string name="plant_information">Plant Information</string>
+    <string name="spruce">The Spruce is a website with a lot of great gardening tips and information.</string>
+    <string name="google">Google is also a useful resourse for looking up information.</string>
+    <string name="website_description">Here are some websites that have useful gardening information</string>
 
 </resources>

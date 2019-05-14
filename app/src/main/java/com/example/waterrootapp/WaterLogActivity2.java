@@ -1,6 +1,6 @@
 /**@author: Daniel Abadjiev
  * @date: 5/15/19
- * @description: This is the second
+ * @description: This is the second version of the activity to
  */
 package com.example.waterrootapp;
 

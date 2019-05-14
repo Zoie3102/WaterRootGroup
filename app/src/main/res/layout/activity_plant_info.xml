@@ -14,10 +14,10 @@
 
         android:background="@color/blue"
         android:gravity="center"
-        android:text="Plant Information"
+        android:text="@string/plant_information"
         android:textColor="@color/white"
 
-        android:textSize="20dp"
+        android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -60,7 +60,7 @@
                 android:id="@+id/textOutput"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Here are some websites that have useful gardening information"
+                android:text="@string/website_description"
                 tools:layout_editor_absoluteX="36dp"
                 tools:layout_editor_absoluteY="371dp" />
 
@@ -80,7 +80,7 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="The Spruce is a website with a lot of great gardening tips and information." />
+                    android:text="@string/spruce" />
             </LinearLayout>
 
             <LinearLayout
@@ -99,7 +99,7 @@
                     android:id="@+id/googleText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Google is also a useful resourse for looking up information." />
+                    android:text="@string/google" />
             </LinearLayout>
 
         </LinearLayout>

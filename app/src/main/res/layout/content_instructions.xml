@@ -16,7 +16,7 @@
 
         android:background="@color/blue"
         android:gravity="center"
-        android:text="Instructions"
+        android:text="@string/instructions"
         android:textColor="@color/white"
 
         android:textSize="20dp"
@@ -56,13 +56,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textOutput"
+            <Button
+                android:id="@+id/youtube"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/large_text"
-                tools:layout_editor_absoluteX="36dp"
-                tools:layout_editor_absoluteY="371dp" />
+                android:layout_height="wrap_content"
+                android:text="@string/video_instructions" />
+
+            <Button
+                android:id="@+id/instructionsDoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/instructions_document" />
         </LinearLayout>
     </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
