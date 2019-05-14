@@ -38,8 +38,9 @@ import static com.example.waterrootapp.TimerService.usermonth;
 import static com.example.waterrootapp.TimerService.userday;
 import static com.example.waterrootapp.TimerService.useryear;
 
-/**
- * An activity that stores user information such as the date and time they would like the plant to be watered and transfers the information to other activities.
+/**@author: Nilay McLaren
+ * @date: 5/15/19
+ * @description: A page that controls all of the information that the user is inputting into the application. This information is stored and sent to the other activities, firebase, and the timer service.
  */
 
 public class SettingsActivity2 extends AppCompatActivity {
