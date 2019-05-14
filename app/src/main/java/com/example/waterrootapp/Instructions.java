@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+
+
+
 /**
  * An activity that contains instructions for setting up and using the device
  */

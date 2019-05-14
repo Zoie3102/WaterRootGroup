@@ -5,9 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-/**
- * A page that contains links to the WaterLog, MoistureLog, PlantInfo Database, and Instructions page
+
+/**@author: Nilay McLaren
+ * @date: 5/15/19
+ * @description: A page that contains links to the WaterLog, MoistureLog, PlantInfo Database, and Instructions page.
  */
+
+
 
 public class AdditionalFeatures extends AppCompatActivity {
 

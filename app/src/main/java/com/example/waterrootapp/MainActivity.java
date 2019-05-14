@@ -37,6 +37,10 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**@author: Nilay McLaren and Daniel Abadjiev
+ * @date: 5/15/19
+ * @description: A page that contains a button to water a plant instantly and links to the settings page and additional features page.
+ */
 public class MainActivity extends AppCompatActivity {
     public static String time;
     public  static  SharedPreferences.Editor wateredTodayEditor;
