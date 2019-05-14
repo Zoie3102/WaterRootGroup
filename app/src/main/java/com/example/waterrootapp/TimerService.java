@@ -36,6 +36,11 @@ import static com.example.waterrootapp.MainActivity.time;
 import static com.example.waterrootapp.MainActivity.wateredTodayEditor;
 import static com.example.waterrootapp.MainActivity.wateredTodayPref;
 
+/**@author: Nilay McLaren
+ * @date: 5/15/19
+ * @description: A background service that automatically changes a variable in firebase to water a plant when the current time is the same as the time that the user typed in.
+ */
+
 public class TimerService extends Service {
 String current;
 Calendar calendar;
