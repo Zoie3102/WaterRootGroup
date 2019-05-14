@@ -145,6 +145,9 @@ public class TimerService extends Service {
         return current;
     }
 
+    /**
+     * This class is for the thread that automatically waters the plant.
+     */
     class thread extends Thread {
         @Override
         public void run() {
@@ -164,7 +167,6 @@ public class TimerService extends Service {
             }
         }
     }
-
 
     public void setWaterToday() {
         View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
@@ -213,6 +215,10 @@ public class TimerService extends Service {
 
     }
 
+    /**
+     * This method returns a time string that used for tagging moisture
+     * @return the formatted string that is used for logging moisture
+     */
     public static String getTime2() {
         Calendar calendar3 = Calendar.getInstance();
         String year = Integer.toString(calendar3.get(Calendar.YEAR));
@@ -227,54 +233,25 @@ public class TimerService extends Service {
         return month + "\\" + stringday + "\\" + year + " at " + hour + ":" + stringminute;
     }
 
+    /**
+     * This class is a thread to add a moisture listener in the scope of the background service.
+     */
     class thread2 extends Thread {
         @Override
         public void run() {
             getTime();
             addRecentMoistureListener();
             Log.d(TAG, current);
-//            while(true){
-//                Log.d(TAG, getTime2());
-//                try {
-//                    thread2.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
         }
     }
 
-    //This is a logically flawed method, because it accesses the wrong moisture, so the right implementation is the next method.
-    public static void addMoistureLogListener() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference moistureLogRec = database.getReference("moistureLog").child("recentLog");
-//        final String timeString="Time: "+currentTime;
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-//                waterLogText=dataSnapshot.getValue().toString();
-                DatabaseReference moistureRef = dataSnapshot.getChildren().iterator().next().getRef();
-                long moistureVal = (long) dataSnapshot.getChildren().iterator().next().getValue();
-                moistureLogRec.getParent().child(getTime2()).child("moisture").setValue(moistureVal);
-                Log.d("inServece", "I just added a child HOHOHOHOEEHEHEHE");
-//                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
-
-
-                // ...
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w("firebase", "loadPost:onCancelled", databaseError.toException());
-                // ...
-            }
-        };
-        moistureLogRec.addValueEventListener(postListener);
-    }
-
-    //This is the method that actually listens for moisture updates correctly
+    /**
+     * This method adds a listener to the recentMoisture and logs all moisture updates
+     * The application has to do this because the arduino does not have access to a reliable clock,
+     * so when the arduino pushes a moisture value to the database it does not have an accurate time
+     * stamp for it.
+     * This is the method that actually listens for moisture updates correctly.
+     */
     public static void addRecentMoistureListener() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference moistureRec = database.getReference("moistureLog").child("recentMoisture");
@@ -282,23 +259,19 @@ public class TimerService extends Service {
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get Post object and use the values to update the UI
-//                waterLogText=dataSnapshot.getValue().toString();
+                // Get the most recent moisture
                 try {
                     long moistureVal = (long) dataSnapshot.getValue();
                     moistureRec.getParent().child(getTime2()).child("moisture").setValue(moistureVal);
-                    Log.d("inServece", "I just added a child HipatihipHAHA");
+                    Log.d("inService", "I just added a child ");
                 } catch (java.lang.ClassCastException e) {
                     Log.d("oops", "I don't think that's the right object type.");
-                    moistureRec.getParent().child(getTime2()).child("moisture").setValue("Yah dun goofed, moisture is a long??!");
+                    moistureRec.getParent().child(getTime2()).child("moisture").setValue("Ummm moisture is a long??!");
 
                 } catch (java.lang.NullPointerException e) {
                     Log.wtf("inService", "moisture database structure missing!!!");
                 }
-//                moistureLog.child("recentLog").removeValue(dataSnapshot.getChildren().iterator().next());
 
-
-                // ...
             }
 
             @Override
@@ -316,7 +289,7 @@ public class TimerService extends Service {
      * Return the current time and date. A 24 hour clock is used.
      * @return the current date and time in military time
      */
-    public String getCurrentTime() {
+    public static String getCurrentTime() {
         Calendar calendar = Calendar.getInstance();
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         String month = Integer.toString(calendar.get(Calendar.MONTH) + 1);
