@@ -11,86 +11,69 @@ import android.view.View;
 import android.widget.Switch;
 
 import static android.support.constraint.Constraints.TAG;
-
+/**@author: Nilay McLaren
+ * @date: 5/15/19
+ * @description: A page that appears the first time the app is opened on a mobile device and informs the user how to set up their WaterRoot.
+ */
 
 public class SplashScreenActivity extends AppCompatActivity {
-public boolean ok = true;
+    public boolean ok = true;
     public static SharedPreferences sharedPreferences;
-     public static boolean firstTime;
-     public static boolean switchon;
-    public  SharedPreferences myPrefs;
+    public static boolean firstTime;
+    public static boolean switchon;
+    public SharedPreferences myPrefs;
 
-
-
-    @Override    protected void onCreate(Bundle savedInstanceState) {
-
-
+    /**
+     * Creates an instance of SplashScreenActivity
+     * @param savedInstanceState is the activities previously saved state
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         myPrefs = getSharedPreferences("prefID", Context.MODE_PRIVATE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        sharedPreferences = getSharedPreferences("MyPrefs",MODE_PRIVATE);
-    firstTime = sharedPreferences.getBoolean("firstTime",true);
-
-       // switchon = sharedPreferences.getBoolean("switchOn",true);
-        Log.d(TAG, Boolean.toString(myPrefs.getBoolean("switchon", true)));
-        Log.d(TAG, Boolean.toString(firstTime));
-
-
-
-
-//        if (switchon==true){
-//            new Handler().postDelayed(new Runnable() {
-//                @Override                public void run() {
-//
-//
-//                    Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                }
-//            }, 10000);
-//        }
-if(myPrefs.getBoolean("switchon", true) == true){
-    new Handler().postDelayed(new Runnable() {
-        @Override                public void run() {
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            firstTime = false;
-            editor.putBoolean("firstTime",firstTime);
-            editor.apply();
-
-            Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
-            startActivity(i);
-            finish();
-        }
-    }, 10000);
-}
-
-        else if (firstTime== true){
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        firstTime = sharedPreferences.getBoolean("firstTime", true);
+        if (myPrefs.getBoolean("switchon", true) == true) {
             new Handler().postDelayed(new Runnable() {
-                @Override                public void run() {
-
+                @Override
+                public void run() {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     firstTime = false;
-                    editor.putBoolean("firstTime",firstTime);
+                    editor.putBoolean("firstTime", firstTime);
                     editor.apply();
-
-                    Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
+                    Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
                 }
             }, 10000);
-        }
-        else {
-            Intent i  = new Intent(SplashScreenActivity.this,MainActivity.class);
+        } else if (firstTime == true) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    firstTime = false;
+                    editor.putBoolean("firstTime", firstTime);
+                    editor.apply();
+                    Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }, 10000);
+        } else {
+            Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
             startActivity(i);
             finish();
         }
 
 
     }
-
-    public void onExit (View v){
-        Intent startNewActivity = new Intent(SplashScreenActivity.this,MainActivity.class);
+    /**
+     * Takes the user to the MainActivity page from the SplashScreenActivity page
+     * @param v is the View object
+     */
+    public void onExit(View v) {
+        Intent startNewActivity = new Intent(SplashScreenActivity.this, MainActivity.class);
         startActivity(startNewActivity);
 
 
