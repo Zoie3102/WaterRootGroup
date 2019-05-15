@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
      * Creates an instance of the MainActivity
      * @param savedInstanceState is the activities previously saved state
      */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
@@ -83,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public static final String CHANNEL_ID = "exampleServiceChannel";
 
-
+    /**
+     * This creates a notification channel
+     */
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel serviceChannel = new NotificationChannel(
@@ -98,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
      * Displays a popup informing the user that the plant has been watered once they click the WaterNow button
      * @param view is the view object
      */
-
     public void displayPopup (View view){
         Snackbar snackbar = Snackbar.make(findViewById(R.id.rootLayout), R.string.water_message,Snackbar.LENGTH_LONG);
         snackbar.show();
@@ -110,9 +110,6 @@ public class MainActivity extends AppCompatActivity {
      * @return the current date and time in military time
      */
     public String getCurrentTime(View view) {
-
-
-
         Calendar calendar = Calendar.getInstance();
         String year = Integer.toString(calendar.get(Calendar.YEAR));
         String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
@@ -127,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
      * Waters the plant when the WaterNow button is pressed. The pumpOn command in firebase is set to 1.
      * @param v is the view object
      */
-
      public void onWater(View v){
          Calendar calendar = Calendar.getInstance();
          String year = Integer.toString(calendar.get(Calendar.YEAR));
@@ -151,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
      * Sets the pumpOn command to zero in firebase. Stores the moisture and duration in firebase. Whether the plant was watered manually or automatically is also stored.
      * @param v is the view object
      */
-
     public void onNotWater(View v){
         TextView output= (TextView) findViewById(R.id.nextWater);
         output.setText("Not Pressed");
@@ -201,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * When the WaterNow button is pressed, this method is called and a boolean is set to true. The setWaterToday() method is subsequently called. Next, a timer is set so that the boolean will be set to false in 24 hours.
      */
-
     public void waterToday(){
         wateredTodayEditor = wateredTodayPref.edit();
         wateredTodayEditor.putBoolean("waterToday", true);

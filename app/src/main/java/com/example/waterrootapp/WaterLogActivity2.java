@@ -25,6 +25,11 @@ import java.util.Iterator;
 public class WaterLogActivity2 extends AppCompatActivity {
     public static String waterLogText;
     public static TextView textOutput;
+
+    /**
+     * This is the onCreate method for the Activity
+     * @param savedInstanceState is the Bundle that loads the activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,7 +5,10 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
+/**@author: Daniel Abadjiev
+ * @date: 5/15/19
+ * @description: This is an activity that displays two buttons which link to resources on plant information.
+ */
 public class PlantInfo extends AppCompatActivity {
 
     /**
