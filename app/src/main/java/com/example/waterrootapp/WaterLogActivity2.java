@@ -93,7 +93,7 @@ public class WaterLogActivity2 extends AppCompatActivity {
                         waterLogText+="\n"+timeTag;
                         waterLogText+="\n\t \t Duration: "+durationVal+
                                 "\n\t \t Manual or Automatic: "+manAutoVal+"\n\t \t Moisture: "+
-                                moistureVal+"\n\t \t Watered?: "+waterVal;
+                                moistureVal+"\n\t \t Watered: "+waterVal;
                     }
                 }
                 textOutput.setText(waterLogText);
