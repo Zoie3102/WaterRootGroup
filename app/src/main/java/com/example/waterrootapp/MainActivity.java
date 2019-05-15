@@ -161,9 +161,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference commands = database.getReference("commands");
         commands.child("pumpOn").setValue(0);
         DatabaseReference log = database.getReference("waterLog");
-        String time = getCurrentTime(v);
-
-
+        String time = TimerService.getCurrentTime();
         log.child(time).child("watered").setValue(true);
         log.child(time).child("moisture").setValue(0);
         log.child(time).child("duration").setValue(0);

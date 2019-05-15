@@ -264,6 +264,7 @@ public class TimerService extends Service {
                 } catch (java.lang.NullPointerException e) {
                     Log.wtf("inService", "moisture database structure missing!!!");
                 }
+                moistureRec.getParent().child("recentLog").removeValue();
 
             }
 
@@ -289,7 +290,8 @@ public class TimerService extends Service {
         String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
         String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
         String minute = Integer.toString(calendar.get(Calendar.MINUTE));
-        String current = "Time: " + hour + ":" + minute + "," + " Day: " + day + "," + " Month: " + month + "," + " Year: " + year;
+        String second = Integer.toString(calendar.get(Calendar.SECOND));
+        String current = "Time: " + hour + ":" + minute +":" + second + "," + " on " + day + "\\" + month + "\\" + year;
         return current;
     }
 

@@ -44,12 +44,12 @@ public class PlantInfo extends AppCompatActivity {
     public void onSpruce(View v){
         openWebPage("https://www.thespruce.com/outdoors-and-gardening-4127780");
     }
-    //copied from https://developer.android.com/guide/components/intents-common#Browser then updated
 
     /**
      * Opens a browser and automatically opens the correct website
      * @param url is the url of the website that will be opened
      */
+    //copied from https://developer.android.com/guide/components/intents-common#Browser then updated
     public void openWebPage(String url) {
         Uri webpage = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);

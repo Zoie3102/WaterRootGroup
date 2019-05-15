@@ -46,7 +46,7 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/return_to_additionalfeatures2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moisture_activity2"
         app:layout_constraintVertical_bias="0.0">
@@ -61,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/website_description"
+                android:textSize="18sp"
                 tools:layout_editor_absoluteX="36dp"
                 tools:layout_editor_absoluteY="371dp" />
 
@@ -71,16 +72,18 @@
 
                 <ImageButton
                     android:id="@+id/imageButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
                     android:onClick="onSpruce"
-                    app:srcCompat="@drawable/common_full_open_on_phone" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/leaf_clipart2" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/spruce" />
+                    android:text="@string/spruce"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,16 +93,18 @@
 
                 <ImageButton
                     android:id="@+id/googleButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
                     android:onClick="onGoogle"
-                    app:srcCompat="@drawable/common_full_open_on_phone" />
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/google_logo" />
 
                 <TextView
                     android:id="@+id/googleText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/google" />
+                    android:text="@string/google"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </LinearLayout>

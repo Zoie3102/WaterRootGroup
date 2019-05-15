@@ -77,8 +77,14 @@ public class WaterLogActivity2 extends AppCompatActivity {
                     else{
                         Iterator<DataSnapshot> entryIta=entry.getChildren().iterator();
                         String durationVal=entryIta.next().getValue().toString();
+                        if (durationVal.equals("0"))
+                            durationVal="Not Available";
                         String manAutoVal=entryIta.next().getValue().toString();
-                        long moistureVal= ((long) entryIta.next().getValue());
+                        if (manAutoVal.equals("0"))
+                            manAutoVal="Not Available";
+                        String moistureVal= ""+((long) entryIta.next().getValue());
+                        if (moistureVal.equals("0"))
+                            moistureVal="Not Available";
                         boolean waterVal=((boolean) entryIta.next().getValue());
                         String timeTag=entry.getKey().toString();
                         if (timeTag.indexOf("Current ")>-1){
