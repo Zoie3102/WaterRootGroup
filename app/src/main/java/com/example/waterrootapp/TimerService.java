@@ -114,8 +114,8 @@ public class TimerService extends Service {
             Log.d(TAG, "strings are equal");
             FirebaseDatabase database2 = FirebaseDatabase.getInstance();
             DatabaseReference commands2 = database2.getReference("commands");
-            waterToday();
-            commands2.child("pumpOn").setValue(1);
+sendIntent();
+commands2.child("pumpOn").setValue(1);
             try {
                 thread.sleep(userduration);
             } catch (InterruptedException e) {
@@ -173,52 +173,29 @@ public class TimerService extends Service {
         }
     }
 
-    public void setWaterToday() {
-        View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+//    public void setWaterToday() {
+//        View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
+//        TextView wateredTodayYet = (TextView) myLayout.findViewById(R.id.watered_yet);
+//        if (wateredTodayPref.getBoolean("waterToday", false) == true) {
+//            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
+//            Log.d(TAG, "okkokokok");
+//        } else {
+//            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+//        }
+//    }
 
-        TextView wateredTodayYet = (TextView) myLayout.findViewById(R.id.watered_yet);
-        if (wateredTodayPref.getBoolean("waterToday", false) == true) {
-            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
-            Log.d(TAG, "okkokokok");
 
 
-        } else {
-            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
-        }
+    public void sendIntent(){
+        Intent local = new Intent();
+
+        local.setAction("com.hello.action");
+
+        this.sendBroadcast(local);
+        Log.d(TAG, "sendIntent: ");
     }
 
 
-    public void waterToday() {
-
-        wateredTodayEditor = wateredTodayPref.edit();
-
-        wateredTodayEditor.putBoolean("waterToday", true);
-        wateredTodayEditor.commit();
-        // setWaterToday();
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-
-                // runOnUiThread(new Runnable() {
-                //     @Override
-                //     public void run() {
-                wateredTodayEditor.putBoolean("waterToday", false);
-                wateredTodayEditor.commit();
-                Log.d(TAG, "run: fhefshfoes");
-                //setWaterToday();
-                //    }
-                //   });
-
-
-            }
-
-        }, 10000);
-
-        Log.d(TAG, "dsfad ");
-
-
-    }
 
     /**
      * This method returns a time string that used for tagging moisture
@@ -294,6 +271,8 @@ public class TimerService extends Service {
         String current = "Time: " + hour + ":" + minute +":" + second + "," + " on " + day + "\\" + month + "\\" + year;
         return current;
     }
+
+
 
 
 }

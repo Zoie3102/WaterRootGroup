@@ -4,12 +4,16 @@ import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -58,8 +62,13 @@ public class MainActivity extends AppCompatActivity {
         wateredTodayEditor = wateredTodayPref.edit();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        createNotificationChannel();
         setWaterToday();
+
+      //  TextView wateredTodayYet = findViewById(R.id.watered_yet);
+
+      // wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+
+        createNotificationChannel();
         ImageButton water=findViewById(R.id.imageButton);
         water.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -80,7 +89,28 @@ public class MainActivity extends AppCompatActivity {
         });
         water.setAdjustViewBounds(true);
         getResources();
+
+ BroadcastReceiver updateUIReciver;
+
+        IntentFilter filter = new IntentFilter();
+
+        filter.addAction("com.hello.action");
+
+        updateUIReciver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "onReceive: ");
+waterToday();
+            }
+        };
+        registerReceiver(updateUIReciver,filter);
+
     }
+
+
+
+
     public static final String CHANNEL_ID = "exampleServiceChannel";
 
 
@@ -203,10 +233,17 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void waterToday(){
+
+
+
+
+
+
         wateredTodayEditor = wateredTodayPref.edit();
         wateredTodayEditor.putBoolean("waterToday", true);
         wateredTodayEditor.commit();
         setWaterToday();
+       // wateredTodayPref.getBoolean("waterToday",false);
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -220,8 +257,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-        }, 86400000);
+        }, 5000);
     }
-
 
 }
