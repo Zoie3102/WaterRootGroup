@@ -62,11 +62,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setWaterToday();
-
-      //  TextView wateredTodayYet = findViewById(R.id.watered_yet);
-
-      // wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
-
         createNotificationChannel();
         ImageButton water=findViewById(R.id.imageButton);
         water.setOnTouchListener(new View.OnTouchListener() {
@@ -88,22 +83,41 @@ public class MainActivity extends AppCompatActivity {
         });
         water.setAdjustViewBounds(true);
         getResources();
-
- BroadcastReceiver updateUIReciver;
-
+        BroadcastReceiver updateUIReciver;
         IntentFilter filter = new IntentFilter();
-
         filter.addAction("com.hello.action");
-
         updateUIReciver = new BroadcastReceiver() {
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.d(TAG, "onReceive: ");
-waterToday();
+                waterToday();
+                TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+                wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d(TAG, "thread working");
+                            //      wateredTodayEditor.putBoolean("waterToday", false);
+                              //  wateredTodayEditor.apply();
+                                TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+                                wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+
+                            }
+                        });
+                    }
+
+                }, 5000);
+
             }
         };
-        registerReceiver(updateUIReciver,filter);
+        registerReceiver(updateUIReciver, filter);
+
+
+
 
     }
 
@@ -113,7 +127,7 @@ waterToday();
     public static final String CHANNEL_ID = "exampleServiceChannel";
 
     /**
-     * This creates a notification channel
+     * This creates a notification channel, a feature that may be implemented in the future.
      */
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -213,7 +227,7 @@ waterToday();
     /**
      * Sets the textview in main activity to say that the plant has or has not been watered in the last 24 hours.
      */
-    public  void setWaterToday(){
+    public void setWaterToday(){
         TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
         if(wateredTodayPref.getBoolean("waterToday", false)==true){
             wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
@@ -227,12 +241,6 @@ waterToday();
      * When the WaterNow button is pressed, this method is called and a boolean is set to true. The setWaterToday() method is subsequently called. Next, a timer is set so that the boolean will be set to false in 24 hours.
      */
     public void waterToday(){
-
-
-
-
-
-
         wateredTodayEditor = wateredTodayPref.edit();
         wateredTodayEditor.putBoolean("waterToday", true);
         wateredTodayEditor.commit();
@@ -253,5 +261,7 @@ waterToday();
 
         }, 5000);
     }
+
+
 
 }

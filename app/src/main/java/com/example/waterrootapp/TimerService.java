@@ -68,17 +68,8 @@ public class TimerService extends Service {
     }
 
     /**
-     * This method does what?????????????????
-     * @param intent is the
-     * @return
+     * Destroys service and kills the thread that checks if the current date equals the user date
      */
-    protected String getUserDate(@Nullable Intent intent) {
-        String userDate = intent.getStringExtra("userDate");
-        Log.d(TAG, userDate);
-        return userDate;
-    }
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -173,26 +164,16 @@ commands2.child("pumpOn").setValue(1);
         }
     }
 
-//    public void setWaterToday() {
-//        View myLayout = LayoutInflater.from(this).inflate(R.layout.activity_main, null);
-//        TextView wateredTodayYet = (TextView) myLayout.findViewById(R.id.watered_yet);
-//        if (wateredTodayPref.getBoolean("waterToday", false) == true) {
-//            wateredTodayYet.setText("Plant HAS been watered in the last 24 hours");
-//            Log.d(TAG, "okkokokok");
-//        } else {
-//            wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
-//        }
-//    }
 
 
 
+    /**
+     * Sends an intent to other activities. The intent will allow the MainActivity text view to say that the plant has been watered after the timer goes changes pumpOn.
+     */
     public void sendIntent(){
         Intent local = new Intent();
-
         local.setAction("com.hello.action");
-
         this.sendBroadcast(local);
-        Log.d(TAG, "sendIntent: ");
     }
 
 
