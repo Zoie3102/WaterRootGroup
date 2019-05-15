@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
 
-                }, 5000);
+                }, 86400000);
 
             }
         };
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-        }, 5000);
+        }, 86400000);
     }
 
 
