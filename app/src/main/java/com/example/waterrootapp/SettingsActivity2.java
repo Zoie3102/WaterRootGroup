@@ -175,7 +175,10 @@ public class SettingsActivity2 extends AppCompatActivity {
         startActivity(startNewActivity);
     }
 
-
+    /**
+     * This class is used to help with listening to changes to the text in the EditTexts
+     * @param <T> the parameter this class is supposed to take in since it implements TextWatcher
+     */
     public abstract class TextChangedListener<T> implements TextWatcher {
         private T target;
         public TextChangedListener(T target) {
