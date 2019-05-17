@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setWaterToday();
         createNotificationChannel();
+       // TextView wateredTodayYet = (TextView) findViewById(R.id.watered_yet);
+       // wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
+
         ImageButton water=findViewById(R.id.imageButton);
         water.setOnTouchListener(new View.OnTouchListener() {
             @Override

@@ -153,7 +153,9 @@ commands2.child("pumpOn").setValue(1);
                 if (current.equals(userTimer)) {
                     autoWater();
                     userday++;
-                    userTimer = userhour + "/" + userminute + "/" + userday + "/" + usermonth + "/" + useryear;
+
+                    userTimer = userhour + "/" + userminute + "/" + usermonth + "/" + userday + "/" + useryear;
+
                 }
                 try {
                     sleep(45000);
