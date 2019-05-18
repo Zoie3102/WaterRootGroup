@@ -6,11 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreenActivity">
 
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/blue"
+        android:onClick="onExit"
+        android:text="@string/exit_button_content"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="33dp">
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/exit_button"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,14 +48,14 @@
                 android:text="@string/header_content"
                 android:textColor="@color/white"
 
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
 
             <Button
                 android:id="@+id/feature_one"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -44,8 +65,8 @@
 
             <TextView
                 android:id="@+id/feature_one_instructions"
-                android:layout_width="240dp"
-                android:layout_height="100dp"
+                android:layout_width="240sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -60,8 +81,8 @@
 
             <Button
                 android:id="@+id/feature_two"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -71,8 +92,8 @@
 
             <TextView
                 android:id="@+id/feature_two_instructions"
-                android:layout_width="240dp"
-                android:layout_height="100dp"
+                android:layout_width="240sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -87,8 +108,8 @@
 
             <Button
                 android:id="@+id/step_three"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="100sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -98,8 +119,8 @@
 
             <TextView
                 android:id="@+id/step_three_instructions"
-                android:layout_width="240dp"
-                android:layout_height="100dp"
+                android:layout_width="240sp"
+                android:layout_height="100sp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
@@ -112,25 +133,6 @@
                 app:layout_constraintStart_toEndOf="@+id/step_three"
                 app:layout_constraintTop_toBottomOf="@+id/feature_two_instructions" />
 
-            <Button
-                android:id="@+id/exit_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="236dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/blue"
-                android:onClick="onExit"
-                android:text="@string/exit_button_content"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/step_three_instructions" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

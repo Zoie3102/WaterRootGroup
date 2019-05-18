@@ -146,5 +146,6 @@
     <string name="google">Google is also a useful resourse for looking up information.</string>
     <string name="website_description">Here are some websites that have useful gardening information</string>
     <string name="return_to_additional_features">RETURN TO ADDITIONAL FEATURES</string>
+    <string name="water_now_description">This buttons activates the device</string>
 
 </resources>

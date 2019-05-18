@@ -27,6 +27,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/water_now_description"
                 android:onClick="displayPopup"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -53,13 +54,12 @@
 
             <TextView
                 android:id="@+id/watered_yet"
-                android:layout_width="224dp"
-                android:layout_height="93dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
-                android:layout_marginBottom="81dp"
                 android:gravity="center"
                 android:textColor="@color/blue"
                 android:textSize="20sp"
@@ -69,12 +69,16 @@
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nextWater"
-                app:layout_constraintVertical_bias="0.263" />
+                app:layout_constraintVertical_bias="0.263"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
 
             <Button
                 android:id="@+id/settingsButton"
                 android:layout_width="163dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
                 android:layout_marginBottom="24dp"
@@ -87,6 +91,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_default="percent"
                 app:layout_constraintHeight_percent="0.1"
+                app:layout_constraintStart_toEndOf="@+id/additionalFeatures"
+                app:layout_constraintTop_toBottomOf="@+id/watered_yet"
                 app:layout_constraintWidth_default="percent"
                 app:layout_constraintWidth_percent="0.4" />
 
@@ -96,6 +102,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="24dp"
                 android:background="@color/blue"
                 android:onClick="onAdditional"
@@ -107,6 +114,7 @@
                 app:layout_constraintHeight_percent="0.1"
                 app:layout_constraintHorizontal_bias="0.477"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/watered_yet"
                 app:layout_constraintWidth_default="percent"
                 app:layout_constraintWidth_percent="0.4" />
         </android.support.constraint.ConstraintLayout>
