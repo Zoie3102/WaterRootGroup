@@ -45,13 +45,13 @@ import static com.example.waterrootapp.MainActivity.wateredTodayPref;
 public class TimerService extends Service {
     String current;
     Calendar calendar;
-    public static int userhour = 13;
-    public static int userminute = 38;
-    public static int userday = 30;
-    public static int usermonth = 4;
-    public static int useryear = 2019;
-    public static int userduration;
-    public static String userTimer;
+    public static int userhour; //The hour of the day (24 hour clock) that the user wishes to water the plant
+    public static int userminute; //The minute of the day that the user wishes to water the plant
+    public static int userday; //The day of the month that the user wishes to water the plant
+    public static int usermonth; //The month of the year that the user wishes to water the plant
+    public static int useryear; // The year that the user wishes to water the plant
+    public static int userduration; //The number of seconds the user wishes to water the plant for
+    public static String userTimer; //The userhour, userminute, userday, usermonth, and useryear integers formatted as one string
 
     /**
      * Creates an instance of the TimerService background service
@@ -76,6 +76,11 @@ public class TimerService extends Service {
         thread.interrupted();
     }
 
+    /**
+     * The onBind method returns null when the first client connects with the service. After one client has called onBind, it will not be called again.
+     * @param intent is the intent being passed to the method
+     * @return
+     */
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -83,19 +88,6 @@ public class TimerService extends Service {
     }
 
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null) {
-            int position = intent.getIntExtra("position", 0);
-        }
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID).setContentTitle("Example Service").setContentText("ok").setContentIntent(pendingIntent).build();
-        startForeground(1, notification);
-        return START_NOT_STICKY;
-
-
-    }
 
     /**
      * Waters the plant by changing the pumpOn variable in firebase and adds new information to the WaterLog
@@ -142,9 +134,12 @@ commands2.child("pumpOn").setValue(1);
     }
 
     /**
-     * This class is for the thread that automatically waters the plant.
+     * This class is for the thread that automatically waters the plant. It runs every 45 seconds and checks to see if the current time equals the time the user submitted.
      */
     class thread extends Thread {
+        /**
+         * Runs the code to check the user date and current date forever until the timer is shut off.
+         */
         @Override
         public void run() {
             getTime();
