@@ -45,10 +45,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                     Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
-                }
+             }
             }, 10000);
-        } else if (firstTime == true) {
-            new Handler().postDelayed(new Runnable() {
+        }
+        else if (firstTime == true) {
+           new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -58,8 +59,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                     Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
-                }
-            }, 10000);
+               }
+           }, 100000);
         } else {
             Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
             startActivity(i);
