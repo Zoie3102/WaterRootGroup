@@ -43,16 +43,42 @@ import static com.example.waterrootapp.MainActivity.wateredTodayPref;
  */
 
 public class TimerService extends Service {
+    /**
+     * This is a string which stores the current time
+     */
     String current;
+    /**
+     * This stores the calendar object used throughout the class.
+     */
     Calendar calendar;
-    public static int userhour; //The hour of the day (24 hour clock) that the user wishes to water the plant
-    public static int userminute; //The minute of the day that the user wishes to water the plant
-    public static int userday; //The day of the month that the user wishes to water the plant
-    public static int usermonth; //The month of the year that the user wishes to water the plant
-    public static int useryear; // The year that the user wishes to water the plant
-    public static int userduration; //The number of seconds the user wishes to water the plant for
-    public static String userTimer; //The userhour, userminute, userday, usermonth, and useryear integers formatted as one string
-
+    /**
+     * The hour of the day (24 hour clock) that the user wishes to water the plant
+     */
+    public static int userhour;
+    /**
+     * The minute of the day that the user wishes to water the plant
+     */
+    public static int userminute;
+    /**
+     * The day of the month that the user wishes to water the plant
+     */
+    public static int userday;
+    /**
+     * The month of the year that the user wishes to water the plant
+     */
+    public static int usermonth;
+    /**
+     * The year that the user wishes to water the plant
+     */
+    public static int useryear;
+    /**
+     * The number of seconds the user wishes to water the plant for
+     */
+    public static int userduration;
+    /**
+     * The userhour, userminute, userday, usermonth, and useryear integers formatted as one string
+     */
+    public static String userTimer;
     /**
      * Creates an instance of the TimerService background service
      */
@@ -97,8 +123,8 @@ public class TimerService extends Service {
             Log.d(TAG, "strings are equal");
             FirebaseDatabase database2 = FirebaseDatabase.getInstance();
             DatabaseReference commands2 = database2.getReference("commands");
-sendIntent();
-commands2.child("pumpOn").setValue(1);
+            sendIntent();
+            commands2.child("pumpOn").setValue(1);
             try {
                 thread.sleep(userduration);
             } catch (InterruptedException e) {
