@@ -17,11 +17,10 @@ import static android.support.constraint.Constraints.TAG;
  */
 
 public class SplashScreenActivity extends AppCompatActivity {
-    public boolean ok = true;
-    public static SharedPreferences sharedPreferences;
-    public static boolean firstTime;
-    public static boolean switchon;
-    public SharedPreferences myPrefs;
+    public static SharedPreferences sharedPreferences;//SharedPreferences is used to store data that can be accessed from different activities after the app has been closed and reopened. This shared preference will be used to save the value of the first time boolean.
+    public static boolean firstTime;//True if it is the first time that the app is being opened on a device
+    public static boolean switchon; //Boolean that is true if the splash screen switch is one and false if it is off
+    public SharedPreferences myPrefs; //SharedPreferences is used to store data that can be accessed from different activities after the app has been closed and reopened. This shared preference will be used to save the value of the switchon boolean.
 
     /**
      * Creates an instance of SplashScreenActivity
