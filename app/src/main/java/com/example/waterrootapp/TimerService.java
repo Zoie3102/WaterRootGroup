@@ -39,7 +39,8 @@ import static com.example.waterrootapp.MainActivity.wateredTodayPref;
 /**
  * @author: Nilay McLaren
  * @date: 5/15/19
- * @description: A background service that automatically changes a variable in firebase to water a plant when the current time is the same as the time that the user typed in.
+ * @description: A background service that automatically changes a variable in firebase to water a
+ * plant when the current time is the same as the time that the user typed in.
  */
 
 public class TimerService extends Service {
@@ -103,7 +104,8 @@ public class TimerService extends Service {
     }
 
     /**
-     * The onBind method returns null when the first client connects with the service. After one client has called onBind, it will not be called again.
+     * The onBind method returns null when the first client connects with the service. After one
+     * client has called onBind, it will not be called again.
      * @param intent is the intent being passed to the method
      * @return
      */
@@ -160,7 +162,8 @@ public class TimerService extends Service {
     }
 
     /**
-     * This class is for the thread that automatically waters the plant. It runs every 45 seconds and checks to see if the current time equals the time the user submitted.
+     * This class is for the thread that automatically waters the plant. It runs every 45 seconds
+     * and checks to see if the current time equals the time the user submitted.
      */
     class thread extends Thread {
         /**
@@ -191,7 +194,8 @@ public class TimerService extends Service {
 
 
     /**
-     * Sends an intent to other activities. The intent will allow the MainActivity text view to say that the plant has been watered after the timer goes changes pumpOn.
+     * Sends an intent to other activities. The intent will allow the MainActivity text view to say
+     * that the plant has been watered after the timer goes changes pumpOn.
      */
     public void sendIntent(){
         Intent local = new Intent();
