@@ -44,6 +44,9 @@ import static com.example.waterrootapp.TimerService.useryear;
  */
 
 public class SettingsActivity2 extends AppCompatActivity {
+    /**
+     * This is the name of the preferences file that is saved on the device
+     */
     public static final String PREFS_NAME = "MyPrefsFile";
     public SharedPreferences myPrefs;
     public SharedPreferences.Editor editor2;
