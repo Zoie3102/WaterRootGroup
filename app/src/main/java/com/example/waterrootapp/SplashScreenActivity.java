@@ -13,14 +13,31 @@ import android.widget.Switch;
 import static android.support.constraint.Constraints.TAG;
 /**@author: Nilay McLaren
  * @date: 5/15/19
- * @description: A page that appears the first time the app is opened on a mobile device and informs the user how to set up their WaterRoot.
+ * @description: A page that appears the first time the app is opened on a mobile device and informs
+ * the user how to set up their WaterRoot.
  */
 
 public class SplashScreenActivity extends AppCompatActivity {
-    public static SharedPreferences sharedPreferences;//SharedPreferences is used to store data that can be accessed from different activities after the app has been closed and reopened. This shared preference will be used to save the value of the first time boolean.
-    public static boolean firstTime;//True if it is the first time that the app is being opened on a device
-    public static boolean switchon; //Boolean that is true if the splash screen switch is one and false if it is off
-    public SharedPreferences myPrefs; //SharedPreferences is used to store data that can be accessed from different activities after the app has been closed and reopened. This shared preference will be used to save the value of the switchon boolean.
+    /**
+     * SharedPreferences is used to store data that can be accessed from different activities after
+     * the app has been closed and reopened. This shared preference will be used to save the value
+     * of the first time boolean.
+     */
+    public static SharedPreferences sharedPreferences;
+    /**
+     * True if it is the first time that the app is being opened on a device
+     */
+    public static boolean firstTime;
+    /**
+     * Boolean that is true if the splash screen switch is one and false if it is off
+     */
+    public static boolean switchon;
+    /**
+     * SharedPreferences is used to store data that can be accessed from different activities after
+     * the app has been closed and reopened. This shared preference will be used to save the value
+     * of the switchon boolean.
+     */
+    public SharedPreferences myPrefs;
 
     /**
      * Creates an instance of SplashScreenActivity
