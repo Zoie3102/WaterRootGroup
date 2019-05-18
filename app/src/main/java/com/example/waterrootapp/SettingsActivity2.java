@@ -48,9 +48,15 @@ public class SettingsActivity2 extends AppCompatActivity {
      * This is the name of the preferences file that is saved on the device
      */
     public static final String PREFS_NAME = "MyPrefsFile";
+    /**
+     * A shared preference that will be used to save the state of the switches and edit texts
+     */
     public SharedPreferences myPrefs;
+    /**
+     *An editor that will be used to apply changes to a shared preference
+     */
     public SharedPreferences.Editor editor2;
-    public static final String LAST_TEXT = "";
+
 
     /**
      * Creates an instance of the SettingsActivity
