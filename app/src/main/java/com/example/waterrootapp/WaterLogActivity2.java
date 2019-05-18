@@ -23,7 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Iterator;
 
 public class WaterLogActivity2 extends AppCompatActivity {
+    /**
+     * This is a global variable to store the text that comes from the moisture log
+     */
     public static String waterLogText;
+    /**
+     * This is a global reference to the TextView that will be responsible for outputing text.
+     */
     public static TextView textOutput;
 
     /**
@@ -66,6 +72,13 @@ public class WaterLogActivity2 extends AppCompatActivity {
 //        output.setText(waterLog.toString());
 
         ValueEventListener postListener = new ValueEventListener() {
+            /**
+             *  This is the method that is called every time data are changed in this section of the
+             *  database.
+             *  It sets the text in the TextView output to the appropriate log
+             * @param dataSnapshot is the DataSnapshot that contains the database entries whenever
+             *                     they are changed
+             */
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
@@ -103,6 +116,10 @@ public class WaterLogActivity2 extends AppCompatActivity {
                 }
                 textOutput.setText(waterLogText);
             }
+            /**
+             * This is the method to cancel the listener.
+             * @param databaseError is the DatabseError that triggers this method
+             */
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Getting Post failed, log a message

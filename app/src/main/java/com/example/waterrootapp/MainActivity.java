@@ -46,9 +46,17 @@ import java.util.TimerTask;
  * @description: A page that contains a button to water a plant instantly and links to the settings page and additional features page.
  */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * This is a global time variable that other activities can access to share a time
+     */
     public static String time;
+    /**
+     * This is a SharedPreferences editor that facilitates sharing data across all activiteies
+     */
     public  static  SharedPreferences.Editor wateredTodayEditor;
-
+    /**
+     * This is a SharedPreferences object that facilitates sharing data across all activiteies
+     */
     public static SharedPreferences wateredTodayPref;
 
     /**
@@ -57,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Here we intialize those global SharedPreference tools
         wateredTodayPref = getSharedPreferences("waterToday",MODE_PRIVATE);
         wateredTodayEditor = wateredTodayPref.edit();
         super.onCreate(savedInstanceState);
@@ -67,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
        // wateredTodayYet.setText("Plant HAS NOT been watered in the last 24 hours");
 
         ImageButton water=findViewById(R.id.imageButton);
+        //The touch listener is used instead of an onClick method so that way we can seperately trigger
+        //methods when the button is pressed and realesed.
         water.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -125,8 +136,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
+    /**
+     * This is the ID for the Channel for the Service
+     */
     public static final String CHANNEL_ID = "exampleServiceChannel";
 
     /**

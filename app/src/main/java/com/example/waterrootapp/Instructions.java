@@ -13,7 +13,9 @@ import android.view.View;
 
 
 /**
- * An activity that contains instructions for setting up and using the device
+ * @author: Daniel A
+ * @date: 5/15/2019
+ * @description: An activity that contains instructions for setting up and using the device
  */
 public class Instructions extends AppCompatActivity {
     /**
